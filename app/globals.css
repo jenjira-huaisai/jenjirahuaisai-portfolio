@@ -26,7 +26,7 @@
   --line-height-display: 1.34375;
   --letter-spacing-display: 0;
 
-  --font-size-logo: 1.375rem;
+  --font-size-logo: 1.25rem;
   --line-height-logo: normal;
   --letter-spacing-logo: 0;
 
@@ -156,9 +156,8 @@ button {
  */
 .main-nav {
   display: flex;
-  width: 47%;
   align-items: center;
-  justify-content: space-between;
+  gap: 2.5rem;
 }
 
 .main-nav a {
