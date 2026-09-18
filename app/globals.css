@@ -10,7 +10,7 @@
 
 :root {
   /* Color */
-  --color-background: #ffffff;
+  --color-background: #f7f7f7;
   --color-text: #000000;
   --color-text-muted: #5a5a5a;
   --color-border: #d8d8d8;
@@ -26,7 +26,7 @@
 
   --font-size-display: clamp(2.25rem, 1.6rem + 2vw, 3.25rem);
   --line-height-display: 1.18;
-  --letter-spacing-display: 0;
+  --letter-spacing-display: -0.02em;
 
   --font-size-section: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
   --line-height-section: 1.25;
@@ -320,7 +320,7 @@ svg {
    --------------------------------------------------------- */
 
 .hero {
-  padding-top: 1.5rem;
+  padding-top: 2.5rem;
 }
 
 /*
@@ -362,7 +362,6 @@ svg {
 }
 
 .hero-description {
-.hero-description {
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -370,7 +369,6 @@ svg {
   margin-top: clamp(1.25rem, 3vh, 2.25rem);
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
-}
 }
 
 .hero-actions {
@@ -486,63 +484,66 @@ svg {
 
 .proof-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: 3rem;
+  /* left column sizes to its content, logos take the rest */
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
 }
 
 .proof-figures {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
   border-right: 1px solid var(--color-border);
   padding-right: 3rem;
 }
 
+/* Number and caption sit side by side, not stacked. */
 .proof-figure {
-  text-align: center;
-  max-width: 9rem;
-  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .proof-number {
   font-size: var(--font-size-stat);
   font-weight: var(--font-weight-medium);
-  line-height: 1.1;
+  line-height: 1;
 }
 
+/* 8ch forces the two-word captions onto two lines,
+   which keeps all three figures the same height. */
 .proof-caption {
-  margin-top: 0.5rem;
-  font-size: var(--font-size-xsmall);
-  line-height: var(--line-height-xsmall);
-  color: var(--color-text-muted);
+  max-width: 14ch;
+  font-size: var(--font-size-small);
+  line-height: 1.5;
+  color: var(--color-text);
 }
 
 .proof-clients {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
+  gap: 3rem;
+  padding-left: 3rem;
   min-width: 0;
 }
 
 .proof-clients-label {
-  font-size: var(--font-size-label);
+  font-size: var(--font-size-small);
   font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--letter-spacing-label);
+  white-space: nowrap;
 }
 
 .proof-logos {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 2.5rem;
-  width: 100%;
+  flex: 1;
+  min-width: 0;
 }
 
 .proof-logos img {
-  height: 5rem;
+  height: 2.75rem;
   width: auto;
   object-fit: contain;
 }
@@ -594,7 +595,7 @@ svg {
 }
 
 .work-card-summary {
-  font-size: 0.8125rem;
+  font-size: var(--font-size-small);
   line-height: var(--line-height-small);
   color: var(--color-text-muted);
   margin-bottom: 1rem;
@@ -978,10 +979,16 @@ svg {
   }
 
   .proof-figures {
+    justify-content: center;
     border-right: none;
     padding-right: 0;
     padding-bottom: 2.5rem;
     border-bottom: 1px solid var(--color-border);
+  }
+
+  .proof-clients {
+    justify-content: center;
+    padding-left: 0;
   }
 
   .work-grid,
@@ -1012,20 +1019,25 @@ svg {
   }
 
   .proof-figures {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
-    text-align: left;
-  }
-
-  .proof-figure {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    text-align: left;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
   }
 
   .proof-caption {
-    margin-top: 0;
+    max-width: none;
+  }
+
+  .proof-clients {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .proof-logos {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1.75rem;
   }
 
   .work-grid,

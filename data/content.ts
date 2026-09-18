@@ -113,7 +113,6 @@ export const capabilities: Capability[] = [
 export const stats = [
   { number: '2', caption: 'Real client projects' },
   { number: '5', caption: 'Academic projects' },
-  { number: '2', caption: 'Years into IT' },
 ];
 
 export const clientLogos = [
