@@ -1,13 +1,21 @@
-import Header from "@/components/Header";
+import Hero from '@/components/Hero';
+import ProofBar from '@/components/ProofBar';
+import SelectedWork from '@/components/SelectedWork';
+import Feedback from '@/components/Feedback';
+import Capabilities from '@/components/Capabilities';
+import AboutTeaser from '@/components/AboutTeaser';
+import ContactCTA from '@/components/ContactCTA';
 
 export default function Home() {
   return (
     <>
-      <Header />
-
-      <main id="main-content">
-        {/* Hero will go here next */}
-      </main>
+      <Hero />
+      <ProofBar />
+      <SelectedWork />
+      <Feedback />
+      <Capabilities />
+      <AboutTeaser />
+      <ContactCTA />
     </>
   );
 }
