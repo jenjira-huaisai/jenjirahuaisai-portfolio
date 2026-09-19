@@ -75,8 +75,12 @@
 
   /* Header */
   --header-height: 4.35rem;
-}
 
+  /* Vertical rhythm inside the hero */
+  --hero-gap-title: 2.25rem;
+  --hero-gap-actions: 3rem;
+  --hero-gap-status: 4rem;
+}
 
 /* ---------------------------------------------------------
    Reset
@@ -375,7 +379,7 @@ svg {
   flex-direction: column;
   gap: 0;
   max-width: 44ch;
-  margin-top: clamp(1.25rem, 3vh, 2.25rem);
+  margin-top: var(--hero-gap-title);
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
 }
@@ -385,7 +389,7 @@ svg {
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
-  margin-top: clamp(1.5rem, 3.5vh, 2.5rem);
+  margin-top: var(--hero-gap-actions);
 }
 
 .button-primary {
@@ -427,7 +431,7 @@ svg {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-top: clamp(1.5rem, 4vh, 3rem);
+  margin-top: var(--hero-gap-status);
   font-size: var(--font-size-meta);
   line-height: var(--line-height-meta);
   letter-spacing: var(--letter-spacing-meta);
