@@ -67,7 +67,13 @@ export default function Footer() {
             ))}
           </nav>
         </div>
+      </Container>
 
+      {/* Outside the container so it spans the full width,
+          matching the rule at the top of the footer. */}
+      <div className="footer-divider" />
+
+      <Container>
         <div className="footer-bottom">
           <p>&copy; {year} Jenjira Huaisai. All rights reserved.</p>
           <p>Designed and built by Jenjira Huaisai.</p>
