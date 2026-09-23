@@ -1,82 +1,94 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import Container from './Container';
-import { ArrowUpRight } from './Arrows';
+import { usePathname } from 'next/navigation';
 
-const NAV = [
-  { href: '/work', label: 'Work' },
-  { href: '/capabilities', label: 'Capabilities' },
+type NavLink = {
+  href: string;
+  label: string;
+};
+
+// Change these to your real pages / sections
+const NAV_LINKS: NavLink[] = [
+  { href: '/#work', label: 'Work' },
   { href: '/about', label: 'About' },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
 
-  // Escape closes the menu, which keyboard users expect.
+  // Close the menu when the page changes
   useEffect(() => {
-    if (!open) return;
-    function onKey(event: KeyboardEvent) {
-      if (event.key === 'Escape') setOpen(false);
-    }
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, [open]);
+    setIsOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.classList.toggle('nav-open', isOpen);
+    if (!isOpen) return;
+
+    // Escape closes the menu and returns focus to the button
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+
+    // Resizing to desktop closes the menu
+    const desktop = window.matchMedia('(min-width: 64.0625rem)');
+    const handleResize = (event: MediaQueryListEvent) => {
+      if (event.matches) setIsOpen(false);
+    };
+
+    window.addEventListener('keydown', handleKey);
+    desktop.addEventListener('change', handleResize);
+
+    return () => {
+      document.body.classList.remove('nav-open');
+      window.removeEventListener('keydown', handleKey);
+      desktop.removeEventListener('change', handleResize);
+    };
+  }, [isOpen]);
 
   return (
-    <header className="site-header">
-      <Container>
-        <div className="header-inner">
-          <Link href="/" className="site-logo">
-            <span className="site-logo-primary">JENJIRA</span> HUAISAI
-            <span className="sr-only"> — home</span>
-          </Link>
+    <header className={`site-header${isOpen ? ' is-menu-open' : ''}`}>
+      <div className="container header-inner">
+        <Link href="/" className="site-logo">
+          <span className="site-logo-primary">JENJIRA</span> HUAISAI
+        </Link>
 
-          <button
-            type="button"
-            className="nav-toggle"
-            aria-expanded={open}
-            aria-controls="primary-navigation"
-            onClick={() => setOpen((value) => !value)}
-          >
-            {open ? 'Close' : 'Menu'}
-          </button>
+        <button
+          ref={toggleRef}
+          type="button"
+          className="nav-toggle"
+          aria-expanded={isOpen}
+          aria-controls="main-nav"
+          onClick={() => setIsOpen((open) => !open)}
+        >
+          {isOpen ? 'Close' : 'Menu'}
+          <span className="nav-toggle-icon" aria-hidden="true" />
+        </button>
 
-          <nav
-            id="primary-navigation"
-            className="main-nav"
-            data-open={open}
-            aria-label="Primary"
-          >
-            <ul>
-              {NAV.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} onClick={() => setOpen(false)}>
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <a
-                  href="https://academic.jenjirahuaisai.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+        <nav id="main-nav" className="main-nav" aria-label="Main">
+          <ul>
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  aria-current={pathname === link.href ? 'page' : undefined}
+                  onClick={() => setIsOpen(false)}
                 >
-                  Academic Portfolio
-                  <ArrowUpRight />
-                  <span className="sr-only"> (opens in a new tab)</span>
-                </a>
-              </li>
-              <li>
-                <Link href="/contact" onClick={() => setOpen(false)}>
-                  Contact
+                  {link.label}
                 </Link>
               </li>
-            </ul>
-          </nav>
-        </div>
-      </Container>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 }
