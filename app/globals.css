@@ -59,7 +59,7 @@
 
   --font-size-menu: clamp(1.625rem, 1.2rem + 2vw, 2.25rem);
 
-  --font-size-stat: 2.25rem;
+  --font-size-stat: clamp(2.5rem, 2rem + 1.5vw, 3.5rem);
 
   --font-size-logo: 1.125rem;
   --letter-spacing-logo: 0.08em;
@@ -652,6 +652,64 @@ section[id] {
   height: 2.75rem;
   object-fit: contain;
 }
+
+/* Tablet and desktop only (> 640px) — mobile keeps its own layout.
+   One grey line above and below the figures; figures and logos
+   share the same three columns so they line up. */
+@media (min-width: 40.0625rem) {
+  .proof-figures {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    padding-block: 1.75rem 2.5rem;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .proof-figure {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.875rem;
+  }
+
+  .proof-number {
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+
+  .proof-caption {
+    max-width: 22ch;
+    font-size: var(--font-size-meta);
+    line-height: 1.6;
+    letter-spacing: var(--letter-spacing-meta);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .proof-clients {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .proof-clients-label {
+    font-size: var(--font-size-label);
+    letter-spacing: var(--letter-spacing-label);
+    text-transform: uppercase;
+  }
+
+  .proof-logos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-items: start;
+    gap: 2rem;
+  }
+
+  .proof-logos img {
+    height: 2.5rem;
+  }
+}
+
 
 
 /* =========================================================
