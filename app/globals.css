@@ -1306,6 +1306,53 @@ section[id] {
     --letter-spacing-label: 0.16em;
     --letter-spacing-meta: 0.14em;
   }
+
+    /* Proof figures: two columns, number above caption */
+  .proof-figures {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .proof-figure {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.375rem;
+  }
+
+  .proof-caption {
+    max-width: none;
+  }
+
+  /* "Worked with" matches the other section labels */
+  .proof-clients-label {
+    font-size: var(--font-size-label);
+    letter-spacing: var(--letter-spacing-label);
+  }
+
+  .proof-logos img {
+    height: 2.5rem;
+  }
+
+  /* Same portrait already appears in the hero */
+  .about-portrait {
+    display: none;
+  }
+
+  /* The footer already lists these links */
+  .contact-links {
+    display: none;
+  }
+
+  .footer-social {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 1rem 2rem;
+  }
+
+  .site-footer {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 
