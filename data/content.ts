@@ -1,8 +1,3 @@
-/*
- * All page content lives here so sections stay presentational.
- * Adding a project later means adding one object, not touching JSX.
- */
-
 export type Project = {
   slug: string;
   type: string;
@@ -115,11 +110,11 @@ export type Stat = {
   caption: string;
 };
 
-// Update these as your projects grow — one line per figure
 export const stats: Stat[] = [
   { number: '2', caption: 'Independent client projects' },
   { number: '1', caption: 'Full-stack system, live since 2025' },
-  { number: '5', caption: 'School projects, 1 with a real client' },
+  { number: '1', caption: 'Client project · NHL Stenden' },
+  { number: '4', caption: 'University projects' },
 ];
 
 export const clientLogos = [

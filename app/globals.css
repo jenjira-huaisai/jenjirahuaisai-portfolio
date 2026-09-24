@@ -708,6 +708,14 @@ section[id] {
   .proof-logos img {
     height: 2.5rem;
   }
+
+  /* Desktop (> 1024px): four figures in one row, logos on the same columns */
+@media (min-width: 64.0625rem) {
+  .proof-figures,
+  .proof-logos {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
 }
 
 
