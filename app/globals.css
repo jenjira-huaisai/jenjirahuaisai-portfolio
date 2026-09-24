@@ -1286,6 +1286,26 @@ section[id] {
     flex-direction: column;
     align-items: flex-start;
   }
+
+    /* Hero description flows as one paragraph */
+  .hero-description {
+    display: block;
+    line-height: 1.75;
+  }
+
+  .hero-description > * {
+    display: inline;
+  }
+
+  .hero-description > * + *::before {
+    content: " ";
+  }
+
+  /* Tighter tracking so labels don't wrap on small phones */
+  :root {
+    --letter-spacing-label: 0.16em;
+    --letter-spacing-meta: 0.14em;
+  }
 }
 
 
@@ -1344,4 +1364,6 @@ section[id] {
   .main-nav {
     transform: none;
   }
+  
+
 }
