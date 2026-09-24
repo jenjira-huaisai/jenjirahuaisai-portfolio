@@ -46,7 +46,7 @@ export default function Hero() {
 
             <p className="hero-status">
               <span className="hero-status-line" aria-hidden="true" />
-              LOOKING FOR · OPPORTUNITIES · INTERNSHIP 2027
+              AVAILABLE FOR INTERNSHIP · 2027
             </p>
           </div>
 

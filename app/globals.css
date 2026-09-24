@@ -612,6 +612,7 @@ section[id] {
 }
 
 .proof-number {
+  order: -1; /* number shows first, caption comes first in the markup */
   font-size: var(--font-size-stat);
   font-weight: var(--font-weight-medium);
   line-height: 1;

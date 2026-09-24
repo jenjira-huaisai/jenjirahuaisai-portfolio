@@ -110,9 +110,16 @@ export const capabilities: Capability[] = [
   { name: 'Research & delivery', tools: 'Client requirements, Scrum, hosting, DNS, SEO basics' },
 ];
 
-export const stats = [
-  { number: '2', caption: 'Real client projects' },
-  { number: '5', caption: 'Academic projects' },
+export type Stat = {
+  number: string;
+  caption: string;
+};
+
+// Update these as your projects grow — one line per figure
+export const stats: Stat[] = [
+  { number: '2', caption: 'Independent client projects' },
+  { number: '1', caption: 'Full-stack system, live since 2025' },
+  { number: '5', caption: 'School projects, 1 with a real client' },
 ];
 
 export const clientLogos = [
