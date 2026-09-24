@@ -73,7 +73,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'onpapha',
     relation: 'Client',
-    quote: '[TO BE ADDED]',
+    quote: '[-]',
     name: 'Onpapha Phumdonkan',
     role: 'Business owner',
     organisation: 'Zon Pedicure Salon',
@@ -81,7 +81,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'sukanya',
     relation: 'Client',
-    quote: '[TO BE ADDED]',
+    quote: '[-]',
     name: 'Sukanya Onbuakhaow',
     role: 'Business owner',
     organisation: 'Sukanya Oosterse Massage Techniek',
@@ -89,7 +89,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'caleb',
     relation: 'Teammate',
-    quote: '[TO BE ADDED]',
+    quote: '[-]',
     name: 'Caleb Guitou',
     role: 'Project Innovate team leader',
     organisation: 'IT programme · NHL Stenden',
