@@ -13,7 +13,7 @@ type NavLink = {
 const NAV_LINKS: NavLink[] = [
   { href: '/#work', label: 'Work' },
   { href: '/about', label: 'About' },
-  { href: '/#contact', label: 'Contact' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export default function Header() {
@@ -22,9 +22,12 @@ export default function Header() {
   const pathname = usePathname();
 
   // Close the menu when the page changes
-  useEffect(() => {
+  // (compared during render, the pattern React recommends over an effect)
+  const [previousPathname, setPreviousPathname] = useState(pathname);
+  if (pathname !== previousPathname) {
+    setPreviousPathname(pathname);
     setIsOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     document.body.classList.toggle('nav-open', isOpen);
