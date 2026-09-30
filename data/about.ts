@@ -48,7 +48,6 @@ export type Hobby = {
   icon: HobbyIcon;
   title: string;
   text: string;
-  /** Optional in-page link, e.g. Travel → the map */
   href?: string;
 };
 
@@ -127,7 +126,7 @@ export const education: EducationItem[] = [
   },
   {
     period: '2022',
-    title: 'CAMPUS-Asia6 exchange program, JASSO scholarship',
+    title: 'CAMPUS-Asia6 Exchange Program, JASSO Scholarship',
     place: 'University of Tsukuba, Japan',
     note: {
       label:
