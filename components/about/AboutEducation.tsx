@@ -3,11 +3,37 @@ import { ArrowUpRight } from '../Arrows';
 import { certificates, education, languages } from '@/data/about';
 import styles from './about.module.css';
 
-function ExternalLink({ href, children }: { href: string; children: React.ReactNode }) {
+/*
+ * Links are quiet at rest (text + small arrow, no underline)
+ * and underline on hover, so the section isn't covered in lines.
+ */
+function ExternalLink({
+  href,
+  className,
+  children,
+}: {
+  href: string;
+  className?: string;
+  children: string;
+}) {
+  // Keep the last word and the arrow together, so the arrow
+  // never wraps onto a line by itself
+  const splitAt = children.lastIndexOf(' ') + 1;
+  const start = children.slice(0, splitAt);
+  const lastWord = children.slice(splitAt);
+
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={styles.externalLink}>
-      {children}
-      <ArrowUpRight />
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${styles.externalLink}${className ? ` ${className}` : ''}`}
+    >
+      {start}
+      <span className={styles.noWrap}>
+        {lastWord}
+        <ArrowUpRight />
+      </span>
       <span className="sr-only"> (opens in a new tab)</span>
     </a>
   );
@@ -29,14 +55,11 @@ export default function AboutEducation() {
                   <div>
                     <h3 className={styles.recordTitle}>{item.title}</h3>
                     <p className={styles.muted}>{item.place}</p>
-                    {item.note && (
-                      <p className={styles.recordNote}>
-                        {item.note.href ? (
-                          <ExternalLink href={item.note.href}>{item.note.label}</ExternalLink>
-                        ) : (
-                          item.note.label
-                        )}
-                      </p>
+                    {item.detail && <p className={styles.recordDetail}>{item.detail}</p>}
+                    {item.link && (
+                      <ExternalLink href={item.link.href} className={styles.recordLink}>
+                        {item.link.label}
+                      </ExternalLink>
                     )}
                   </div>
                 </li>
@@ -65,7 +88,7 @@ export default function AboutEducation() {
                 {languages.map((language) => (
                   <div key={language.name}>
                     <dt>{language.name}</dt>
-                    <dd className={styles.muted}>{language.level}</dd>
+                    <dd>{language.level}</dd>
                   </div>
                 ))}
               </dl>

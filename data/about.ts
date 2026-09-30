@@ -113,7 +113,10 @@ export type EducationItem = {
   period: string;
   title: string;
   place: string;
-  note?: { label: string; href?: string };
+  /** Extra line in plain text, e.g. the full programme name */
+  detail?: string;
+  /** Short link shown on its own line; keep the label to a few words */
+  link?: { label: string; href: string };
 };
 
 export const education: EducationItem[] = [
@@ -126,8 +129,8 @@ export const education: EducationItem[] = [
     period: '2023',
     title: 'Master of Educational Administration',
     place: 'Khon Kaen University, Thailand',
-    note: {
-      label: 'Thesis research published in 2024',
+    link: {
+      label: 'Published thesis research (2024)',
       href: 'https://so02.tci-thaijo.org/index.php/jemmsu/article/view/266295',
     },
   },
@@ -135,9 +138,10 @@ export const education: EducationItem[] = [
     period: '2022',
     title: 'CAMPUS-Asia6 Exchange Program, JASSO Scholarship',
     place: 'University of Tsukuba, Japan',
-    note: {
-      label:
-        'Development Program for Professionals in Education Policy Management Contributing to Solving Global Issues',
+    detail:
+      'Development Program for Professionals in Education Policy Management Contributing to Solving Global Issues',
+    link: {
+      label: 'About the programme',
       href: 'https://campusasia6.education.tsukuba.ac.jp',
     },
   },
