@@ -1508,14 +1508,23 @@ section[id] {
   }
 
   .proof-logos {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 1.5rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 1.75rem 1.5rem;
     width: 100%;
   }
 
   .proof-logos img {
-    height: 2.5rem;
+    width: auto;
+    height: 3rem;
+    max-width: 7.5rem;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+    .proof-logos img.proof-logo-portrait {
+    height: 3.75rem;
   }
 
   /* Grids: one column */
@@ -1524,6 +1533,7 @@ section[id] {
   .capabilities-grid {
     grid-template-columns: minmax(0, 1fr);
   }
+  
 
   .work-header {
     align-items: flex-start;
