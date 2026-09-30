@@ -46,7 +46,8 @@ export default function MapHighlighter({ list, map }: Props) {
   }, [active]);
 
   // One listener for the whole block instead of one per country
-  const handlePointerMove = (event: React.PointerEvent) => {
+  // Find the country under the pointer and where to put the label
+  const activateFrom = (event: React.PointerEvent) => {
     const target = (event.target as Element).closest<HTMLElement | SVGElement>(
       '[data-country]',
     );
@@ -59,7 +60,7 @@ export default function MapHighlighter({ list, map }: Props) {
     let x: number;
     let y: number;
     if (area.contains(target)) {
-      // On the map: the label follows the pointer
+      // On the map: the label sits where the pointer or finger is
       const rect = area.getBoundingClientRect();
       x = ((event.clientX - rect.left) / rect.width) * 100;
       y = ((event.clientY - rect.top) / rect.height) * 100;
@@ -72,12 +73,29 @@ export default function MapHighlighter({ list, map }: Props) {
     setActive({ id: target.dataset.country, name: target.dataset.name, x, y });
   };
 
+  // Mouse: follow the pointer as it moves
+  const handlePointerMove = (event: React.PointerEvent) => {
+    if (event.pointerType === 'mouse') activateFrom(event);
+  };
+
+  // Touch and pen have no hover: a tap selects a country and it stays
+  // selected until another tap (tapping empty space clears it)
+  const handlePointerDown = (event: React.PointerEvent) => {
+    if (event.pointerType !== 'mouse') activateFrom(event);
+  };
+
+  // Only a mouse "leaves"; a finger lifting off shouldn't clear the selection
+  const handlePointerLeave = (event: React.PointerEvent) => {
+    if (event.pointerType === 'mouse') setActive(null);
+  };
+
   return (
     <div
       ref={rootRef}
       className={styles.travelLayout}
       onPointerMove={handlePointerMove}
-      onPointerLeave={() => setActive(null)}
+      onPointerDown={handlePointerDown}
+      onPointerLeave={handlePointerLeave}
     >
       <div>{list}</div>
 
