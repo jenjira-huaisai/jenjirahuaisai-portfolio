@@ -1,0 +1,380 @@
+/* ---------- Shared ---------- */
+
+.lead {
+  max-width: 52ch;
+  margin-top: 1.5rem;
+  color: var(--color-text-muted);
+}
+
+.muted {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  color: var(--color-text-muted);
+}
+
+.inlineLink {
+  border-bottom: 1px solid var(--color-border);
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.externalLink {
+  display: inline;
+  padding-bottom: 1px;
+  border-bottom: 1px solid var(--color-border);
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.externalLink svg {
+  display: inline-block;
+  margin-left: 0.375rem;
+  vertical-align: 0.15em;
+}
+
+/* ---------- 1. My journey ---------- */
+
+.intro {
+  padding-top: clamp(3rem, 2rem + 4vw, 6rem);
+  padding-bottom: var(--section-gap);
+}
+
+.pageTitle {
+  max-width: 14ch;
+}
+
+.journeyLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 4rem;
+  align-items: start;
+}
+
+.timeline {
+  padding-left: 2.5rem;
+  border-left: 1px solid var(--color-border);
+}
+
+/* period | dot + line | content */
+.step {
+  display: grid;
+  grid-template-columns: 8.5rem 1.5rem minmax(0, 1fr);
+  column-gap: 1.5rem;
+  padding-bottom: 2.25rem;
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+.stepPeriod {
+  padding-top: 0.125rem;
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.stepRail {
+  position: relative;
+}
+
+/* The dot */
+.stepRail::before {
+  content: "";
+  position: absolute;
+  top: 0.45rem;
+  left: 50%;
+  width: 0.625rem;
+  height: 0.625rem;
+  border: 1px solid var(--color-text);
+  border-radius: 50%;
+  background: var(--color-text);
+  transform: translateX(-50%);
+}
+
+/* The line down to the next step */
+.stepRail::after {
+  content: "";
+  position: absolute;
+  top: 1.1rem;
+  bottom: -2.25rem;
+  left: 50%;
+  width: 1px;
+  background: var(--color-text);
+  transform: translateX(-50%);
+}
+
+.step:last-child .stepRail::after {
+  display: none;
+}
+
+/* Not reached yet: open dot */
+.stepUpcoming .stepRail::before {
+  background: var(--color-background);
+}
+
+.stepTitle {
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+}
+
+.stepText {
+  max-width: 44ch;
+  margin-top: 0.375rem;
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  color: var(--color-text-muted);
+}
+
+/* ---------- 2. Outside of study ---------- */
+
+.hobbyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem 4rem;
+  margin-top: 3.5rem;
+}
+
+.hobby {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  column-gap: 1.25rem;
+  align-items: start;
+}
+
+.hobbyIcon {
+  padding-top: 0.125rem;
+}
+
+.hobbyTitle {
+  margin-bottom: 0.25rem;
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+}
+
+/* ---------- 3. Travel map ---------- */
+
+.legend {
+  display: flex;
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+  font-size: var(--font-size-small);
+}
+
+.legend li,
+.countryList li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 2px;
+}
+
+.swatchHome {
+  background: var(--color-text);
+}
+
+.swatchVisited {
+  background: #8c8c8c;
+}
+
+.mapWrap {
+  margin-top: 1.5rem;
+}
+
+/* Name of the country under the pointer */
+.mapCaption {
+  min-height: 1.9em;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.map path {
+  fill: #ececec;
+  stroke: var(--color-background);
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+}
+
+.map [data-state="visited"] {
+  fill: #8c8c8c;
+}
+
+.map [data-state="home"] {
+  fill: var(--color-text);
+}
+
+.map [data-country] {
+  cursor: default;
+  transition: fill var(--duration-fast) var(--ease-out);
+}
+
+.map [data-state="visited"][data-active] {
+  fill: #3a3a3a;
+}
+
+.marker {
+  stroke: var(--color-background);
+  stroke-width: 1.5;
+}
+
+.countryList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.75rem;
+  margin-top: 2rem;
+  font-size: var(--font-size-small);
+}
+
+.countryList li {
+  padding-bottom: 1px;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.countryList li[data-active] {
+  border-bottom-color: var(--color-text);
+}
+
+/* ---------- 4. Education, certificates, languages ---------- */
+
+.educationLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 4rem 6rem;
+}
+
+.recordList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* year | detail */
+.record {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  column-gap: 1.5rem;
+}
+
+.recordPeriod {
+  padding-top: 0.125rem;
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.recordTitle {
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+}
+
+.recordNote {
+  max-width: 48ch;
+  margin-top: 0.375rem;
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.sideColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.plainList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.plainList .externalLink {
+  font-weight: var(--font-weight-medium);
+}
+
+.languageList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.languageList div {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  align-items: baseline;
+}
+
+/* ---------- Hover (mouse / trackpad only) ---------- */
+
+@media (hover: hover) and (pointer: fine) {
+  .inlineLink:hover,
+  .externalLink:hover {
+    border-bottom-color: var(--color-text);
+  }
+}
+
+/* ---------- Tablet (≤ 1024px) ---------- */
+
+@media (max-width: 64rem) {
+  .journeyLayout,
+  .educationLayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .timeline {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+/* ---------- Mobile (≤ 640px) ---------- */
+
+@media (max-width: 40rem) {
+  /* Period moves above the title; the rail stays on the left */
+  .step {
+    grid-template-columns: 1.25rem minmax(0, 1fr);
+    column-gap: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .stepPeriod {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+  }
+
+  .stepRail {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .stepRail::after {
+    bottom: -2rem;
+  }
+
+  .step > div {
+    grid-column: 2;
+  }
+
+  .hobbyGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .record {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.25rem;
+  }
+}
