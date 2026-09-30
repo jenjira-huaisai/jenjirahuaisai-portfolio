@@ -1008,6 +1008,159 @@ section[id] {
   color: var(--color-border);
 }
 
+/* Contact page (/contact) */
+.contact-page {
+  padding-block: clamp(3rem, 2rem + 4vw, 6rem) var(--section-gap);
+}
+
+.contact-page-inner {
+  max-width: 36rem;
+}
+
+.contact-page-eyebrow {
+  margin-bottom: 1.25rem;
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-label);
+  letter-spacing: var(--letter-spacing-label);
+}
+
+.contact-page-title {
+  font-size: var(--font-size-section);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-section);
+  letter-spacing: var(--letter-spacing-section);
+}
+
+/* The thank-you heading receives focus by script, not by the visitor */
+.contact-page-title:focus {
+  outline: none;
+}
+
+.contact-page-intro {
+  max-width: 44ch;
+  margin-top: 1rem;
+  color: var(--color-text-muted);
+}
+
+.contact-page-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  margin-top: 3.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-label);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+}
+
+/* Underline-only fields keep the page open and airy */
+.form-input {
+  width: 100%;
+  min-height: var(--touch-target);
+  padding: 0.625rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 0;
+  background: transparent;
+  line-height: 1.6;
+  appearance: none;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.form-input::placeholder {
+  color: #9a9a9a;
+  opacity: 1;
+}
+
+/* Focus: the underline darkens instead of a heavy black frame.
+   Still clearly visible for keyboard users (WCAG 2.4.7). */
+.form-input:focus,
+.form-input:focus-visible {
+  outline: none;
+  border-bottom-color: var(--color-text);
+  box-shadow: 0 1px 0 0 var(--color-text);
+}
+
+.form-textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+.form-input[aria-invalid="true"] {
+  border-bottom-color: #b3261e;
+}
+
+.form-input[aria-invalid="true"]:focus {
+  box-shadow: 0 1px 0 0 #b3261e;
+}
+
+.form-error,
+.form-status-error {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  color: #b3261e;
+}
+
+.form-status-error a {
+  border-bottom: 1px solid currentColor;
+}
+
+/* Spam trap: removed from view and from the tab order */
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-form-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.contact-form-submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.contact-form-note {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  color: var(--color-text-muted);
+}
+
+.contact-form-note a {
+  padding-bottom: 1px;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
 
 /* =========================================================
    14. Footer
@@ -1450,8 +1603,13 @@ section[id] {
     border-bottom-color: var(--color-text);
   }
 
+  .form-input:hover:not(:focus) {
+    border-bottom-color: var(--color-text-muted);
+  }
+
   .footer-social a:hover,
-  .footer-bottom a:hover {
+  .footer-bottom a:hover,
+  .contact-form-note a:hover {
     border-bottom-color: var(--color-text);
   }
 
