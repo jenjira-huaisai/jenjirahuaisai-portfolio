@@ -706,7 +706,10 @@ section[id] {
   }
 
   .proof-logos img {
-    height: 2.5rem;
+    height: 3.5rem;
+    max-width: 9rem;
+    object-fit: contain;
+    object-position: left center;
   }
 
   /* Desktop (> 1024px): four figures in one row, logos on the same columns */
