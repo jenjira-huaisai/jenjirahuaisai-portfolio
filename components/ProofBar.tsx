@@ -22,7 +22,13 @@ export default function ProofBar() {
             <ul className="proof-logos">
               {clientLogos.map((logo) => (
                 <li key={logo.alt}>
-                  <Image src={logo.src} alt={logo.alt} width={120} height={28} />
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={120}
+                    height={28}
+                    className={logo.portrait ? 'proof-logo-portrait' : undefined}
+                  />
                 </li>
               ))}
             </ul>

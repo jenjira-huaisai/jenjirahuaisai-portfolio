@@ -121,4 +121,5 @@ export const clientLogos = [
   { src: '/images/logos/zon.svg', alt: 'Zon Pedicure Salon' },
   { src: '/images/logos/sukanya.svg', alt: 'Sukanya Oosterse Massage Techniek' },
   { src: '/images/logos/envitron.svg', alt: 'Envitron' },
+  { src: '/images/logos/koopman.png', alt: 'Koopman', portrait: true },
 ];

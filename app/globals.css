@@ -102,7 +102,8 @@
   --hero-gap-status: 3.5rem;
 
   /* Interaction */
-  --touch-target: 2.75rem; /* 44px minimum */
+  --touch-target: 2.75rem;
+  /* 44px minimum */
   --ease-out: cubic-bezier(0.2, 0, 0.1, 1);
   --duration-fast: 200ms;
   --duration-medium: 250ms;
@@ -447,7 +448,7 @@ section[id] {
   padding-top: 1.5rem;
 }
 
-.hero > .container {
+.hero>.container {
   width: 100%;
 }
 
@@ -612,7 +613,8 @@ section[id] {
 }
 
 .proof-number {
-  order: -1; /* number shows first, caption comes first in the markup */
+  order: -1;
+  /* number shows first, caption comes first in the markup */
   font-size: var(--font-size-stat);
   font-weight: var(--font-weight-medium);
   line-height: 1;
@@ -712,13 +714,18 @@ section[id] {
     object-position: left center;
   }
 
-  /* Desktop (> 1024px): four figures in one row, logos on the same columns */
-@media (min-width: 64.0625rem) {
-  .proof-figures,
-  .proof-logos {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .proof-logos img.proof-logo-portrait {
+    height: 4.5rem;
   }
-}
+
+  /* Desktop (> 1024px): four figures in one row, logos on the same columns */
+  @media (min-width: 64.0625rem) {
+
+    .proof-figures,
+    .proof-logos {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
 }
 
 
@@ -1274,13 +1281,13 @@ section[id] {
     z-index: 1;
     display: flex;
     flex-direction: column;
-    padding: 1.5rem var(--page-padding)
-      calc(2rem + env(safe-area-inset-bottom, 0px));
+    padding: 1.5rem var(--page-padding) calc(2rem + env(safe-area-inset-bottom, 0px));
     overflow-y: auto;
     background: var(--color-background);
     border-top: 1px solid var(--color-border);
     opacity: 0;
-    visibility: hidden; /* also removes links from the tab order */
+    visibility: hidden;
+    /* also removes links from the tab order */
     transform: translateY(-0.5rem);
     transition:
       opacity var(--duration-medium) var(--ease-out),
@@ -1416,11 +1423,11 @@ section[id] {
     line-height: 1.75;
   }
 
-  .hero-description > * {
+  .hero-description>* {
     display: inline;
   }
 
-  .hero-description > * + *::before {
+  .hero-description>*+*::before {
     content: " ";
   }
 
@@ -1586,6 +1593,7 @@ section[id] {
    ========================================================= */
 
 @media (hover: hover) and (pointer: fine) {
+
   .button-primary:hover svg,
   .text-link:hover svg {
     transform: translateX(3px);
