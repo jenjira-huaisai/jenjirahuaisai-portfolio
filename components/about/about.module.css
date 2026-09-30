@@ -18,16 +18,22 @@
 }
 
 .externalLink {
-  display: inline;
-  padding-bottom: 1px;
-  border-bottom: 1px solid var(--color-border);
-  transition: border-color var(--duration-fast) var(--ease-out);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
 }
 
 .externalLink svg {
   display: inline-block;
   margin-left: 0.375rem;
-  vertical-align: 0.15em;
+  vertical-align: 0.1em;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.noWrap {
+  white-space: nowrap;
 }
 
 /* ---------- 1. My journey ---------- */
@@ -297,11 +303,13 @@
 
 .educationLayout {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
   gap: 4rem 6rem;
 }
 
-.recordList {
+/* One rhythm for every list in this section */
+.recordList,
+.plainList {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -315,38 +323,42 @@
 }
 
 .recordPeriod {
-  padding-top: 0.125rem;
   font-size: var(--font-size-small);
-  line-height: var(--line-height-small);
+  line-height: 1.5rem;
+  color: var(--color-text-muted);
 }
 
 .recordTitle {
   font-size: var(--font-size-card-title);
   font-weight: var(--font-weight-medium);
-  line-height: 1.5;
+  line-height: 1.5rem;
+  text-wrap: balance;
 }
 
-.recordNote {
-  max-width: 48ch;
-  margin-top: 0.375rem;
+.recordDetail {
+  max-width: 46ch;
+  margin-top: 0.25rem;
+  font-size: var(--font-size-xsmall);
+  line-height: var(--line-height-xsmall);
+  color: var(--color-text-muted);
+}
+
+.recordLink {
+  display: inline-block;
+  margin-top: 0.5rem;
   font-size: var(--font-size-small);
-  line-height: var(--line-height-small);
 }
 
 .sideColumn {
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
+  gap: 4rem;
 }
 
-.plainList {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
+/* Certificates are secondary to degrees: regular weight, body size */
 .plainList .externalLink {
-  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 1.5rem;
 }
 
 .languageList {
@@ -361,12 +373,25 @@
   align-items: baseline;
 }
 
+.languageList dd {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+
 /* ---------- Hover (mouse / trackpad only) ---------- */
 
 @media (hover: hover) and (pointer: fine) {
-  .inlineLink:hover,
-  .externalLink:hover {
+  .inlineLink:hover {
     border-bottom-color: var(--color-text);
+  }
+
+  .externalLink:hover {
+    text-decoration-color: var(--color-text);
+  }
+
+  .externalLink:hover svg {
+    transform: translate(2px, -2px);
   }
 }
 
@@ -423,7 +448,7 @@
     grid-template-columns: minmax(0, 1fr);
     row-gap: 0.25rem;
   }
-  
+
     /* Two columns of countries so the list stays short */
   .countryList {
     display: grid;
