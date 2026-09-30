@@ -85,19 +85,26 @@ export const hobbies: Hobby[] = [
 
 /* ---------- Travel map ---------- */
 
-// Codes match Natural Earth's ADM0_A3 ids in data/world-map.ts
-export const homeCountry = { id: 'THA', name: 'Thailand' };
+export type Country = {
+  /** Natural Earth code (ADM0_A3), matches the ids in data/world-map.ts */
+  id: string;
+  name: string;
+  /** ISO 3166-1 alpha-2, lower case: the file name in flag-icons */
+  flag: string;
+};
 
-export const visitedCountries = [
-  { id: 'JPN', name: 'Japan' },
-  { id: 'LAO', name: 'Laos' },
-  { id: 'MMR', name: 'Myanmar' },
-  { id: 'SGP', name: 'Singapore' },
-  { id: 'QAT', name: 'Qatar' },
-  { id: 'NLD', name: 'Netherlands' },
-  { id: 'DEU', name: 'Germany' },
-  { id: 'BEL', name: 'Belgium' },
-  { id: 'PRT', name: 'Portugal' },
+export const homeCountry: Country = { id: 'THA', name: 'Thailand', flag: 'th' };
+
+export const visitedCountries: Country[] = [
+  { id: 'JPN', name: 'Japan', flag: 'jp' },
+  { id: 'LAO', name: 'Laos', flag: 'la' },
+  { id: 'MMR', name: 'Myanmar', flag: 'mm' },
+  { id: 'SGP', name: 'Singapore', flag: 'sg' },
+  { id: 'QAT', name: 'Qatar', flag: 'qa' },
+  { id: 'NLD', name: 'Netherlands', flag: 'nl' },
+  { id: 'DEU', name: 'Germany', flag: 'de' },
+  { id: 'BEL', name: 'Belgium', flag: 'be' },
+  { id: 'PRT', name: 'Portugal', flag: 'pt' },
 ];
 
 /* ---------- Education & certificates ---------- */

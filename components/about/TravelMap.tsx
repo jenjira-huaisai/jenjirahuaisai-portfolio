@@ -26,7 +26,7 @@ export default function TravelMap() {
       <Container>
         <p className="section-label">TRAVEL</p>
         <h2 id="map-title" className="section-title">
-          Where I&rsquo;ve been.
+          Where I&rsquo;ve beens.
         </h2>
 
         <ul className={styles.legend} aria-hidden="true">
