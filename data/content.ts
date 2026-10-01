@@ -19,7 +19,7 @@ export const projects: Project[] = [
       'From client requirements to a responsive business website with Maps integration for a Thai massage studio.',
     role: 'Sole designer & developer',
     liveUrl: 'https://www.sukanyathaimassage.nl',
-    githubUrl: 'https://github.com/jenjira-huaisai/sukanya-thai-massage',
+    githubUrl: 'https://github.com/jenjira-huaisai/sukanya-thai-massage-website.git',
     image: {
       src: '/images/projects/sukanya-card.png',
       alt: 'The Sukanya Thai Massage website shown on a laptop',
@@ -33,7 +33,7 @@ export const projects: Project[] = [
       'From client requirements to a responsive website with a contact form and Maps integration for a medical pedicure practice.',
     role: 'Sole designer & developer',
     liveUrl: 'https://www.zonpedicuresalon.com',
-    githubUrl: 'https://github.com/jenjira-huaisai/zon-pedicure-salon',
+    githubUrl: 'https://github.com/jenjira-huaisai/zonpedicuresalon-website.git',
     image: {
       src: '/images/projects/zonpedicure-card.png',
       alt: 'The Zon Pedicure Salon website shown on a laptop',
@@ -47,7 +47,7 @@ export const projects: Project[] = [
       'Researching and prototyping an energy-demand predicting solution for a single-building Energy Management System.',
     role: 'Scrum master · Team of 5',
     prototypeUrl: '#',
-    githubUrl: 'https://github.com/jenjira-huaisai/envitron',
+    githubUrl: '#',
     image: {
       src: '/images/projects/envitron-card.png',
       alt: 'The Envitron energy demand prediction',
@@ -68,23 +68,24 @@ export const testimonials: Testimonial[] = [
   {
     id: 'onpapha',
     relation: 'Client',
-    quote: '[-]',
+    quote: '[waiting for client feedback]',
     name: 'Onpapha Phumdonkan',
     role: 'Business owner',
-    organisation: 'Zon Pedicure Salon',
+    organisation: 'Zon Pedicure Salon (NL)',
   },
   {
     id: 'sukanya',
     relation: 'Client',
-    quote: '[-]',
+    quote: '[waiting for client feedback]',
     name: 'Sukanya Onbuakhaow',
     role: 'Business owner',
-    organisation: 'Sukanya Oosterse Massage Techniek',
+    organisation: 'Sukanya Oosterse Massage Techniek (NL)',
   },
   {
     id: 'caleb',
     relation: 'Teammate',
-    quote: '[-]',
+    quote:
+      'Your willingness to always go above and beyond to get work done. You are also a person that always wants to learn more.',
     name: 'Caleb Guitou',
     role: 'Project Innovate team leader',
     organisation: 'IT programme · NHL Stenden',

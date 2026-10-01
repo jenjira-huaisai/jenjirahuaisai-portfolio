@@ -13,7 +13,7 @@ const SOCIAL = [
     external: false,
   },
   {
-    href: 'https://www.linkedin.com/in/jenjira-huaisai',
+    href: 'https://www.linkedin.com/in/jenjira-huaisai-326745404',
     icon: '/icons/linkedin.svg',
     label: 'LinkedIn',
     external: true,
@@ -25,7 +25,7 @@ const SOCIAL = [
     external: true,
   },
   {
-    href: 'https://www.instagram.com/',
+    href: 'https://www.instagram.com/jenjirahuaisai',
     icon: '/icons/instagram.svg',
     label: 'Instagram',
     external: true,
