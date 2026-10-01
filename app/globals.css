@@ -655,6 +655,53 @@ section[id] {
   object-fit: contain;
 }
 
+/* Marquee: used when there are 5 or more logos (see ProofBar.tsx) */
+.proof-marquee {
+  --marquee-gap: 5rem;
+  overflow: hidden;
+  /* Logos fade in and out at the edges instead of being cut off */
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.proof-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: proof-marquee 40s linear infinite;
+}
+
+/* Pause to read: mouse over, finger held down, or keyboard focus */
+.proof-marquee:hover .proof-marquee-track,
+.proof-marquee:active .proof-marquee-track,
+.proof-marquee:focus-within .proof-marquee-track {
+  animation-play-state: paused;
+}
+
+.proof-marquee-list {
+  display: flex;
+  align-items: center;
+  gap: var(--marquee-gap);
+  /* Same space after the last logo as between logos, so the loop is even */
+  padding-right: var(--marquee-gap);
+}
+
+.proof-marquee-list img {
+  width: auto;
+  height: 3.5rem;
+  max-width: 9rem;
+  object-fit: contain;
+}
+
+.proof-marquee-list img.proof-logo-portrait {
+  height: 4.5rem;
+}
+
+/* Move by exactly one list: the second list then sits where the first began */
+@keyframes proof-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* Tablet and desktop only (> 640px) — mobile keeps its own layout.
    One grey line above and below the figures; figures and logos
    share the same three columns so they line up. */
@@ -1507,25 +1554,41 @@ section[id] {
     text-transform: uppercase;
   }
 
+  /* Up to 4 logos: one quiet row */
   .proof-logos {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     align-items: center;
-    gap: 1.75rem 1.5rem;
+    gap: 1rem;
     width: 100%;
   }
 
   .proof-logos img {
-    width: auto;
-    height: 3rem;
-    max-width: 7.5rem;
+    width: 100%;
+    height: 2.25rem;
+    max-width: 4.25rem;
     object-fit: contain;
     object-position: left center;
   }
 
-    .proof-logos img.proof-logo-portrait {
+  .proof-logos img.proof-logo-portrait {
+    height: 3rem;
+  }
+
+  /* 5+ logos: smaller marquee */
+  .proof-marquee {
+    --marquee-gap: 2.5rem;
+  }
+
+  .proof-marquee-list img {
+    height: 3rem;
+    max-width: 7.5rem;
+  }
+
+  .proof-marquee-list img.proof-logo-portrait {
     height: 3.75rem;
   }
+ 
 
   /* Grids: one column */
   .work-grid,
@@ -1667,5 +1730,24 @@ section[id] {
 
   .main-nav {
     transform: none;
+  }
+  
+    /* Logo marquee stands still: one wrapped row, no repeated copy */
+  .proof-marquee {
+    mask-image: none;
+  }
+
+  .proof-marquee-track {
+    width: auto;
+    animation: none;
+  }
+
+  .proof-marquee-list {
+    flex-wrap: wrap;
+    row-gap: 1.5rem;
+  }
+
+  .proof-marquee-list[aria-hidden="true"] {
+    display: none;
   }
 }

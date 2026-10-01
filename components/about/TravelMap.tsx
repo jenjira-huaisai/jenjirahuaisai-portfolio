@@ -3,7 +3,7 @@ import Container from '../Container';
 import MapHighlighter from './MapHighlighter';
 import { FLAGS } from './flags';
 import { homeCountry, visitedCountries, type Country } from '@/data/about';
-import { CENTROIDS, COUNTRY_SHAPES } from '@/data/world-map';
+import { CENTROIDS, COUNTRY_SHAPES, MAP_HEIGHT, MAP_WIDTH } from '@/data/world-map';
 import styles from './about.module.css';
 
 const allCountries = [homeCountry, ...visitedCountries];
@@ -13,12 +13,10 @@ const byId = new Map(allCountries.map((country) => [country.id, country]));
 const MARKED = ['SGP', 'QAT'];
 
 /*
- * Every country visited lies between Portugal and Japan, so the map
- * shows that part of the world (about 20°W–158°E, 42°S–70°N) instead
- * of the whole globe. The countries come out about twice as large.
- * Values are in the coordinates of data/world-map.ts.
+ * The part of data/world-map.ts to show. This is the whole world.
+ * To zoom in on Europe–Asia instead: { x: 444, y: 34, width: 494, height: 355 }
  */
-const VIEW = { x: 444, y: 34, width: 494, height: 355 };
+const VIEW = { x: 0, y: 0, width: MAP_WIDTH, height: MAP_HEIGHT };
 
 function stateOf(id: string) {
   if (id === homeCountry.id) return 'home';
@@ -59,31 +57,20 @@ function CountryItem({ country, isHome }: { country: Country; isHome?: boolean }
 }
 
 export default function TravelMap() {
+  // Desktop: the list is as tall as the map and scrolls when it is longer.
+  // tabIndex={0} lets keyboard users focus it and scroll with the arrow keys.
   const list = (
-    <>
-      <p className="section-label">TRAVEL</p>
-      <h2 id="map-title" className="section-title">
-        Where I&rsquo;ve been
-      </h2>
-
-      <ul className={styles.legend} aria-hidden="true">
-        <li>
-          <span className={`${styles.swatch} ${styles.swatchHome}`} />
-          Home
-        </li>
-        <li>
-          <span className={`${styles.swatch} ${styles.swatchVisited}`} />
-          Visited
-        </li>
-      </ul>
-
-      <ul className={styles.countryList} aria-label="Home and countries visited">
-        <CountryItem country={homeCountry} isHome />
-        {visitedCountries.map((country) => (
-          <CountryItem key={country.id} country={country} />
-        ))}
-      </ul>
-    </>
+    <ul
+      id="country-list"
+      className={styles.countryList}
+      aria-label="Home and countries visited"
+      tabIndex={0}
+    >
+      <CountryItem country={homeCountry} isHome />
+      {visitedCountries.map((country) => (
+        <CountryItem key={country.id} country={country} />
+      ))}
+    </ul>
   );
 
   const map = (
@@ -131,6 +118,27 @@ export default function TravelMap() {
   return (
     <section id="where-ive-been" className="section" aria-labelledby="map-title">
       <Container>
+        <div className={styles.travelHeader}>
+          <div>
+            <p className="section-label">TRAVEL</p>
+            <h2 id="map-title" className="section-title">
+              Where I&rsquo;ve been
+            </h2>
+          </div>
+
+          {/* Counts come from the data, so they never go out of date */}
+          <ul className={styles.legend} aria-hidden="true">
+            <li>
+              <span className={`${styles.swatch} ${styles.swatchHome}`} />
+              Home
+            </li>
+            <li>
+              <span className={`${styles.swatch} ${styles.swatchVisited}`} />
+              Visited · {visitedCountries.length}
+            </li>
+          </ul>
+        </div>
+
         <MapHighlighter list={list} map={map} />
       </Container>
     </section>

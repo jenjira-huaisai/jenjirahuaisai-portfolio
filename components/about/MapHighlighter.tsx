@@ -97,7 +97,7 @@ export default function MapHighlighter({ list, map }: Props) {
       onPointerDown={handlePointerDown}
       onPointerLeave={handlePointerLeave}
     >
-      <div>{list}</div>
+      <div className={styles.listColumn}>{list}</div>
 
       <div ref={areaRef} className={styles.mapArea}>
         {map}
