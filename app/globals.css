@@ -442,7 +442,7 @@ section[id] {
    ========================================================= */
 
 .hero {
-  height: calc(100svh - var(--header-height));
+  min-height: calc(100svh - var(--header-height));
   display: flex;
   align-items: stretch;
   padding-top: 1.5rem;
@@ -853,6 +853,124 @@ section[id] {
 .work-card-cta {
   margin-top: auto;
   align-self: flex-start;
+}
+
+/* ---------- Work page (/work) ---------- */
+
+/* Black pill for a stand-out result, e.g. "Fastest on race day" */
+.work-card-badge {
+  align-self: flex-start;
+  margin-bottom: 0.75rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  background: var(--color-text);
+  color: var(--color-background);
+  font-size: var(--font-size-xsmall);
+  line-height: var(--line-height-xsmall);
+}
+
+.work-intro {
+  display: flex;
+  align-items: center;
+  min-height: calc(100svh - var(--header-height));
+  padding-block: 3rem;
+}
+
+.work-intro-lead {
+  max-width: 56ch;
+  margin-top: 1.5rem;
+  color: var(--color-text-muted);
+}
+
+.work-intro > .container {
+  width: 100%;
+}
+
+.year-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+/* Smaller than the CTA buttons: these only move down the page */
+.year-nav .button-secondary {
+  min-height: 2.5rem;
+  padding-inline: 1.25rem;
+}
+
+.year-section {
+  padding-top: 3.5rem;
+  padding-bottom: var(--section-gap);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Year name on the left, what the year was about on the right */
+.year-head {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 4rem;
+  align-items: end;
+  margin-bottom: 3rem;
+}
+
+.year-head .section-label {
+  margin-bottom: 1rem;
+}
+
+.year-title {
+  font-size: var(--font-size-section);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-section);
+  letter-spacing: var(--letter-spacing-section);
+}
+
+.year-focus {
+  max-width: 44ch;
+  font-size: var(--font-size-card-title);
+  line-height: 1.6;
+}
+
+.year-format {
+  max-width: 52ch;
+  margin-top: 0.5rem;
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  color: var(--color-text-muted);
+}
+
+.year-progress {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 3rem;
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+}
+
+.year-progress-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.year-progress-dots span {
+  width: 0.625rem;
+  height: 0.625rem;
+  border: 1px solid var(--color-text);
+  border-radius: 50%;
+}
+
+.year-progress-dots .is-done {
+  background: var(--color-text);
+}
+
+/* Mobile: year text stacks under the year name */
+@media (max-width: 40rem) {
+  .year-head {
+    grid-template-columns: minmax(0, 1fr);
+    margin-bottom: 2rem;
+  }
 }
 
 

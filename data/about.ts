@@ -15,7 +15,7 @@ export const journey: JourneyStep[] = [
   {
     period: 'Before 2025',
     title: 'Teacher in Thailand',
-    text: 'Where I learned to make complex ideas simple and adapt to how each person thinks. Clear communication and problem-solving.',
+    text: 'Where I learned to make complex ideas simple and adapt to how each person thinks.',
   },
   {
     period: '2025',
@@ -25,12 +25,12 @@ export const journey: JourneyStep[] = [
   {
     period: '2025 – 2026',
     title: 'Year 1 · NHL Stenden',
-    text: 'Completed 4 course projects, 1 per period, plus 2 websites built independently for local businesses. Built my first full-stack web application (PHP, MySQL, JavaScript), live since 2025.',
+    text: 'Completed 4 course projects, built 2 websites built independently for local businesses and started a part-time admin role. Launched my first full-stack web application (PHP, MySQL, JavaScript), live since 2025.',
   },
   {
     period: '2026 – 2027',
     title: 'Year 2 · NHL Stenden',
-    text: 'School projects with real clients. Learning React and TypeScript; this site is developed with Next.js.',
+    text: 'School projects with real clients. Learning React and TypeScript by building this site is Next.js.',
   },
   {
     period: 'September 2027',

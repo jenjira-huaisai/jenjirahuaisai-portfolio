@@ -11,7 +11,7 @@ type NavLink = {
 
 // Change these to your real pages / sections
 const NAV_LINKS: NavLink[] = [
-  { href: '/#work', label: 'Work' },
+  { href: '/work', label: 'Work' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
