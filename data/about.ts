@@ -15,7 +15,7 @@ export const journey: JourneyStep[] = [
   {
     period: 'Before 2025',
     title: 'Teacher in Thailand',
-    text: 'Where I learned to make complex ideas simple and and adapt to how each person thinks. Clear communication and problem-solving.',
+    text: 'Where I learned to make complex ideas simple and adapt to how each person thinks. Clear communication and problem-solving.',
   },
   {
     period: '2025',
@@ -37,49 +37,6 @@ export const journey: JourneyStep[] = [
     title: 'Internship',
     text: 'Looking for a UI / front-end internship in an English-speaking team. Available from September 2027.',
     upcoming: true,
-  },
-];
-
-/* ---------- Outside of study ---------- */
-
-export type HobbyIcon = 'travel' | 'camera' | 'pen' | 'frame' | 'music';
-
-export type Hobby = {
-  icon: HobbyIcon;
-  title: string;
-  text: string;
-  href?: string;
-};
-
-export const hobbiesIntro =
-  'Outside of study, I make things with my heart, hands and ears. It sharpens how I see composition, colour and rhythm, and it shows up in the interfaces I build.';
-
-export const hobbies: Hobby[] = [
-  {
-    icon: 'travel',
-    title: 'Travel',
-    text: "9 countries so far, exploring the world for new ideas and inspiration.",
-    href: '#where-ive-been',
-  },
-  {
-    icon: 'camera',
-    title: 'Photography',
-    text: 'Framing, light and what to leave out.',
-  },
-  {
-    icon: 'pen',
-    title: 'Digital illustration',
-    text: 'Drawing in Procreate.',
-  },
-  {
-    icon: 'frame',
-    title: 'Graphic design',
-    text: 'Posters and visuals for fun and real clients.',
-  },
-  {
-    icon: 'music',
-    title: 'Phin',
-    text: 'Playing the phin, a traditional lute from Isan in north-east Thailand.',
   },
 ];
 
@@ -106,6 +63,51 @@ export const visitedCountries: Country[] = [
   { id: 'BEL', name: 'Belgium', flag: 'be' },
   { id: 'PRT', name: 'Portugal', flag: 'pt' },
 ];
+
+/* ---------- Outside of study ---------- */
+
+export type HobbyIcon = 'travel' | 'camera' | 'pen' | 'frame' | 'music';
+
+export type Hobby = {
+  icon: HobbyIcon;
+  title: string;
+  text: string;
+  href?: string;
+};
+
+export const hobbiesIntro =
+  'Outside of study, I make things with my heart, hands and ears. It sharpens how I see composition, colour and rhythm, and it shows up in the interfaces I build.';
+
+export const hobbies: Hobby[] = [
+  {
+    icon: 'travel',
+    title: 'Travel',
+    // Counted from the list above, so it updates when a country is added
+    text: `${visitedCountries.length} countries so far, exploring the world for new ideas and inspiration.`,
+    href: '#where-ive-been',
+  },
+  {
+    icon: 'camera',
+    title: 'Photography',
+    text: 'Framing, light and what to leave out.',
+  },
+  {
+    icon: 'pen',
+    title: 'Digital illustration',
+    text: 'Drawing in Procreate.',
+  },
+  {
+    icon: 'frame',
+    title: 'Graphic design',
+    text: 'Posters and visuals for fun and real clients.',
+  },
+  {
+    icon: 'music',
+    title: 'Phin',
+    text: 'Playing the phin, a traditional lute from Isan in north-east Thailand.',
+  },
+];
+
 
 /* ---------- Education & certificates ---------- */
 
