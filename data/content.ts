@@ -83,20 +83,7 @@ export const projects: Project[] = [
       alt: 'The Winnest breeding intelligence platform',
     },
   },
-  {
-    slug: 'portfolio-system',
-    year: 1,
-    type: 'Full-stack web application',
-    title: 'Academic Portfolio System',
-    summary:
-      'From login to version history: a full-stack PHP and MySQL system with role-based dashboards and per-file access control, live since 2025.',
-    role: 'Sole developer',
-    // githubUrl: '',
-    image: {
-      src: '/images/projects/portfolio-system-card.png',
-      alt: 'A dashboard of the Academic Portfolio System',
-    },
-  },
+
   {
     slug: 'sukanya-thai-massage',
     year: 1,
@@ -127,20 +114,6 @@ export const projects: Project[] = [
     image: {
       src: '/images/projects/zonpedicure-card.png',
       alt: 'The Zon Pedicure Salon website shown on a laptop',
-    },
-  },
-  {
-    slug: 'portfolio-v1',
-    year: 1,
-    type: 'Independent project',
-    title: 'Portfolio v1',
-    summary:
-      'My first portfolio, hand-coded in HTML, CSS and JavaScript to present my work and find my first clients.',
-    role: 'Sole designer & developer',
-    // githubUrl: '',
-    image: {
-      src: '/images/projects/portfolio-v1-card.png',
-      alt: 'The first version of this portfolio',
     },
   },
 

@@ -793,7 +793,8 @@ section[id] {
 .work-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem;
+  /* rows | columns: rows far apart so each link clearly ends its own card */
+  gap: 4.5rem 2rem;
 }
 
 .work-card {
@@ -905,13 +906,9 @@ section[id] {
   border-top: 1px solid var(--color-border);
 }
 
-/* Year name on the left, what the year was about on the right */
+/* Year name, then what the year was about, stacked */
 .year-head {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem 4rem;
-  align-items: end;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .year-head .section-label {
@@ -926,14 +923,15 @@ section[id] {
 }
 
 .year-focus {
-  max-width: 44ch;
+  max-width: 48ch;
+  margin-top: 1.25rem;
   font-size: var(--font-size-card-title);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .year-format {
-  max-width: 52ch;
-  margin-top: 0.5rem;
+  max-width: 56ch;
+  margin-top: 0.75rem;
   font-size: var(--font-size-small);
   line-height: var(--line-height-small);
   color: var(--color-text-muted);
@@ -965,11 +963,9 @@ section[id] {
   background: var(--color-text);
 }
 
-/* Mobile: year text stacks under the year name */
 @media (max-width: 40rem) {
   .year-head {
-    grid-template-columns: minmax(0, 1fr);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
 }
 
