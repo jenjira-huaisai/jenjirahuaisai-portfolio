@@ -15,7 +15,7 @@ export const journey: JourneyStep[] = [
   {
     period: 'Before 2025',
     title: 'Teacher in Thailand',
-    text: 'Where I learned to make complex ideas simple. Clear communication and problem-solving.',
+    text: 'Where I learned to make complex ideas simple and and adapt to how each person thinks. Clear communication and problem-solving.',
   },
   {
     period: '2025',
@@ -25,12 +25,12 @@ export const journey: JourneyStep[] = [
   {
     period: '2025 – 2026',
     title: 'Year 1 · NHL Stenden',
-    text: 'Completed four course projects, one per period, and built my first full-stack web application (PHP, MySQL, JavaScript), live since 2025.',
+    text: 'Completed 4 course projects, 1 per period, plus 2 websites built independently for local businesses. Built my first full-stack web application (PHP, MySQL, JavaScript), live since 2025.',
   },
   {
     period: '2026 – 2027',
     title: 'Year 2 · NHL Stenden',
-    text: 'School projects with real clients, plus websites I build independently for local businesses. Learning React and TypeScript; this site is built with Next.js.',
+    text: 'School projects with real clients. Learning React and TypeScript; this site is developed with Next.js.',
   },
   {
     period: 'September 2027',
@@ -52,7 +52,7 @@ export type Hobby = {
 };
 
 export const hobbiesIntro =
-  'Outside of study, I make things with my hands and my ears. It sharpens how I see composition, colour and rhythm, and it shows up in the interfaces I build.';
+  'Outside of study, I make things with my heart, hands and ears. It sharpens how I see composition, colour and rhythm, and it shows up in the interfaces I build.';
 
 export const hobbies: Hobby[] = [
   {
@@ -74,7 +74,7 @@ export const hobbies: Hobby[] = [
   {
     icon: 'frame',
     title: 'Graphic design',
-    text: 'Posters and visuals for real clients, and some just for fun.',
+    text: 'Posters and visuals for fun and real clients.',
   },
   {
     icon: 'music',
