@@ -3,17 +3,24 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { ArrowUpRight } from './Arrows';
 
 type NavLink = {
   href: string;
   label: string;
+  /** Opens another site in a new tab */
+  external?: boolean;
 };
 
-// Change these to your real pages / sections
 const NAV_LINKS: NavLink[] = [
   { href: '/work', label: 'Work' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
+  {
+    href: '#',
+    label: 'Academic portfolio',
+    external: true,
+  },
 ];
 
 export default function Header() {
@@ -80,13 +87,28 @@ export default function Header() {
           <ul>
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <Link
-                  href={link.href}
-                  aria-current={pathname === link.href ? 'page' : undefined}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.label}
-                </Link>
+                {link.external ? (
+                  // Another site: plain <a>, new tab, ↗ arrow
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.label}
+                    <ArrowUpRight />
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                ) : (
+                  // A page on this site: Next.js <Link>
+                  <Link
+                    href={link.href}
+                    aria-current={pathname === link.href ? 'page' : undefined}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
