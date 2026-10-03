@@ -199,7 +199,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'onpapha',
     relation: 'Client',
-    quote: '[waiting for client feedback]',
+    quote: 'Zij werkt systematisch, efficiënt en is een professionele.',
     name: 'Onpapha Phumdonkan',
     role: 'Business owner',
     organisation: 'Zon Pedicure Salon (NL)',
