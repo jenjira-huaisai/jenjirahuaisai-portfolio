@@ -28,10 +28,10 @@ export const projects: Project[] = [
     slug: 'circle-solutions',
     year: 1,
     type: 'Period 1 · Web Development',
-    title: 'Circle Solutions',
+    title: 'Circle Solutions Web Redesign',
     badge: 'My design was chosen',
     summary:
-      'From client brief to a calm, trust-building website design for a software company, adapted for international expansion.',
+      'From client brief to a trust-building website redesign for a software company, adapted for international expansion.',
     role: 'UI designer · Team of 6',
     // githubUrl: '',
     image: {
@@ -43,9 +43,9 @@ export const projects: Project[] = [
     slug: 'morningstar',
     year: 1,
     type: 'Period 2 · Databases & Networks',
-    title: 'The Morningstar',
+    title: 'The Morningstar School Management System',
     summary:
-      'From privacy requirements to a secure database for a new primary school, with role-based access for 11 staff members.',
+      'From privacy requirements to a secure database for a new primary school, with role-based access for school staff members.',
     role: 'Database engineer · Team of 3',
     // githubUrl: '',
     image: {
@@ -57,10 +57,10 @@ export const projects: Project[] = [
     slug: 'battlebot',
     year: 1,
     type: 'Period 3 · OOP & Hardware',
-    title: 'BattleBot BB008',
+    title: 'BattleBot-BB008',
     badge: 'Fastest on race day',
     summary:
-      'From a blinking LED to a line-following robot in C++, built and tested week by week.',
+      'From a blinking LED to a curve line-following robot in C++, built and tested week by week.',
     role: 'Team of 2',
     // githubUrl: '',
     image: {
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     slug: 'winnest',
     year: 1,
     type: 'Period 4 · Project Innovate',
-    title: 'Winnest',
+    title: 'Winnest - Brreding Intelligence',
     badge: 'My idea was chosen',
     summary:
       'From a real problem in pigeon racing to a breeding intelligence platform, designed in Figma and built as a front-end prototype.',
