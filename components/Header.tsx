@@ -17,7 +17,7 @@ const NAV_LINKS: NavLink[] = [
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
   {
-    href: '#',
+    href: 'https://jenjirahuaisai.com',
     label: 'Academic portfolio',
     external: true,
   },

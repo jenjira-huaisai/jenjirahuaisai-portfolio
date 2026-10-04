@@ -199,18 +199,18 @@ export const testimonials: Testimonial[] = [
   {
     id: 'onpapha',
     relation: 'Client',
-    quote: 'Zij werkt systematisch, efficiënt en is een professionele.',
+    quote: 'Zij werkt systematisch, efficiënt en professioneel..',
     name: 'Onpapha Phumdonkan',
     role: 'Business owner',
     organisation: 'Zon Pedicure Salon (NL)',
   },
   {
-    id: 'sukanya',
+    id: 'gerard',
     relation: 'Client',
-    quote: '[waiting for client feedback]',
-    name: 'Sukanya Onbuakhaow',
+    quote: 'I see your role as a serious and committed team member.',
+    name: 'Gerard Koopman',
     role: 'Business owner',
-    organisation: 'Sukanya Oosterse Massage Techniek (NL)',
+    organisation: 'Gerard en Maniwan Koopman B.V. (NL)',
   },
   {
     id: 'caleb',
