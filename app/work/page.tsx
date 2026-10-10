@@ -3,11 +3,20 @@ import Container from '@/components/Container';
 import ProjectCard from '@/components/ProjectCard';
 import ContactCTA from '@/components/ContactCTA';
 import { projects, studyYears } from '@/data/content';
+import type { ProjectGroup } from '@/data/content';
 
 export const metadata: Metadata = {
   title: 'Work — Jenjira Huaisai',
   description:
     'All projects by Jenjira Huaisai, year by year: school modules at NHL Stenden, real client projects and independent work.',
+};
+
+/* Inside each year: school work first, then my own work */
+const groupOrder: ProjectGroup[] = ['school', 'independentClient', 'independent'];
+
+const groupLabels: Record<Exclude<ProjectGroup, 'school'>, string> = {
+  independentClient: 'Independent real clients',
+  independent: 'Independent projects',
 };
 
 export default function WorkPage() {
@@ -43,7 +52,6 @@ export default function WorkPage() {
       </section>
 
       {studyYears.map((studyYear) => {
-        const yearProjects = projects.filter((p) => p.year === studyYear.year);
         const titleId = `year-${studyYear.year}-title`;
         const progress = studyYear.progress;
 
@@ -73,28 +81,44 @@ export default function WorkPage() {
                 </div>
               </div>
 
-              <ul className="work-grid">
-                {yearProjects.map((project) => (
-                  <ProjectCard key={project.slug} project={project} />
-                ))}
-              </ul>
+              {groupOrder.map((group) => {
+                const groupProjects = projects.filter(
+                  (p) => p.year === studyYear.year && p.group === group,
+                );
+                if (groupProjects.length === 0) return null;
 
-              {progress && (
-                <p className="year-progress">
-                  {/* Filled dot = done, open dot = still to come.
-                      Hidden from screen readers: the text says the same. */}
-                  <span className="year-progress-dots" aria-hidden="true">
-                    {Array.from({ length: progress.total }, (_, i) => (
-                      <span
-                        key={i}
-                        className={i < progress.done ? 'is-done' : undefined}
-                      />
-                    ))}
-                  </span>
-                  Period {progress.done} of {progress.total} ·{' '}
-                  {progress.note}
-                </p>
-              )}
+                const label =
+                  group === 'school' ? studyYear.schoolLabel : groupLabels[group];
+
+                return (
+                  <div key={group} className="work-group">
+                    <h3 className="work-group-label">{label}</h3>
+
+                    <ul className="work-grid">
+                      {groupProjects.map((project) => (
+                        <ProjectCard key={project.slug} project={project} />
+                      ))}
+                    </ul>
+
+                    {group === 'school' && progress && (
+                      <p className="year-progress">
+                        {/* Filled dot = done, open dot = still to come.
+                            Hidden from screen readers: the text says the same. */}
+                        <span className="year-progress-dots" aria-hidden="true">
+                          {Array.from({ length: progress.total }, (_, i) => (
+                            <span
+                              key={i}
+                              className={i < progress.done ? 'is-done' : undefined}
+                            />
+                          ))}
+                        </span>
+                        Period {progress.done} of {progress.total} ·{' '}
+                        {progress.note}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
             </Container>
           </section>
         );

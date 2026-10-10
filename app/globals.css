@@ -943,6 +943,32 @@ section[id] {
   color: var(--color-text-muted);
 }
 
+/* A group inside a year, e.g. "Independent real clients" */
+.work-group + .work-group {
+  margin-top: 5rem;
+}
+
+.work-group-label {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-bottom: 2rem;
+  font-size: var(--font-size-meta);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-meta);
+  letter-spacing: var(--letter-spacing-meta);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Thin line that runs to the edge, like a divider with a title */
+.work-group-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
 .year-progress {
   display: flex;
   flex-wrap: wrap;

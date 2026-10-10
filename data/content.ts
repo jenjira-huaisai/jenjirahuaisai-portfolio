@@ -1,9 +1,18 @@
+/*
+ * Work page groups inside each year:
+ * school = NHL Stenden project, independentClient = my own real client,
+ * independent = my own project without a client
+ */
+export type ProjectGroup = 'school' | 'independentClient' | 'independent';
+
 export type Project = {
   slug: string;
   /** Which study year it belongs to on the Work page */
   year: 1 | 2;
   /** Shown on the homepage in Selected Work */
   featured?: boolean;
+  /** Which group it sits in on the Work page */
+  group: ProjectGroup;
   type: string;
   /** Second, grey line under the type: when the project ran or went live */
   date: string;
@@ -32,6 +41,7 @@ export const projects: Project[] = [
   /* ---------- Year 1 ---------- */
   {
     slug: 'circle-solutions',
+    group: 'school',
     year: 1,
     type: 'Period 1 · Web Development',
     date: 'Sep – Nov 2025',
@@ -48,6 +58,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'morningstar',
+    group: 'school',
     year: 1,
     type: 'Period 2 · Databases & Networks',
     date: 'Nov 2025 – Jan 2026',
@@ -63,6 +74,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'battlebot',
+    group: 'school',
     year: 1,
     type: 'Period 3 · OOP & Hardware',
     date: 'Feb – Apr 2026',
@@ -79,6 +91,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'winnest',
+    group: 'school',
     year: 1,
     type: 'Period 4 · Project Innovate',
     date: 'Apr – Jun 2026',
@@ -96,6 +109,7 @@ export const projects: Project[] = [
 
   {
     slug: 'zon-pedicure-salon',
+    group: 'independentClient',
     year: 1,
     featured: true,
     type: 'Independent client project',
@@ -113,6 +127,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'sukanya-thai-massage',
+    group: 'independentClient',
     year: 1,
     featured: true,
     type: 'Independent client project',
@@ -132,6 +147,7 @@ export const projects: Project[] = [
   /* ---------- Year 2 ---------- */
   {
     slug: 'envitron',
+    group: 'school',
     year: 2,
     featured: true,
     type: 'Real client project · NHL Stenden',
@@ -149,6 +165,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'portfolio-v2',
+    group: 'independent',
     year: 2,
     type: 'Independent project',
     date: 'Rebuilt in Sep 2026',
@@ -171,6 +188,8 @@ export type StudyYear = {
   period: string;
   title: string;
   focus: string;
+  /** Heading above this year's NHL Stenden projects */
+  schoolLabel: string;
   /** Optional second line that explains how the year works */
   format?: string;
   /** Client projects done so far, out of the total for the year */
@@ -182,13 +201,15 @@ export const studyYears: StudyYear[] = [
     year: 1,
     period: '2025 – 2026',
     title: 'Foundations',
+    schoolLabel: 'NHL Stenden · School projects',
     focus:
       'Web design, networks and databases, hardware and C++, and my first client websites.',
   },
   {
     year: 2,
     period: '2026 – 2027',
-    title: 'Real clients',
+    title: 'Real clients · NHL Stenden',
+    schoolLabel: 'NHL Stenden · Real client projects',
     focus: 'Four real client projects, 1 per period, delivered with Scrum.',
     format:
       "Each period, a company sets the challenge. We research it, apply what we've learned, and deliver a working solution in sprints.",
