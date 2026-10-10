@@ -16,11 +16,11 @@ const NAV_LINKS: NavLink[] = [
   { href: '/work', label: 'Work' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
-  {
-    href: 'https://jenjirahuaisai.com',
-    label: 'Academic portfolio',
-    external: true,
-  },
+  // {
+  //   href: 'https://jenjirahuaisai.com',
+  //   label: 'Academic portfolio',
+  //   external: true,
+  // },
 ];
 
 export default function Header() {
