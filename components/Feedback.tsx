@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Container from './Container';
+import FeedbackCard from './FeedbackCard';
 import { ArrowRight } from './Arrows';
-import { testimonials } from '@/data/content';
+import { homeTestimonials } from '@/data/content';
 
 export default function Feedback() {
   return (
@@ -16,29 +17,9 @@ export default function Feedback() {
         </h2>
 
         <ul className="feedback-grid">
-          {testimonials.map((item) => (
+          {homeTestimonials.map((item) => (
             <li key={item.id}>
-              {/* figure/blockquote keeps the quote tied to its author
-                  for screen readers, not just visually. */}
-              <figure className="feedback-card">
-                <div className="feedback-card-head">
-                  <span className="feedback-mark" aria-hidden="true">
-                    &rdquo;
-                  </span>
-                  <span className="feedback-role">
-                    {item.relation.toUpperCase()}
-                  </span>
-                </div>
-
-                <blockquote className="feedback-quote">{item.quote}</blockquote>
-
-                <figcaption className="feedback-person">
-                  <span className="feedback-name">{item.name}</span>
-                  {item.role}
-                  <br />
-                  {item.organisation}
-                </figcaption>
-              </figure>
+              <FeedbackCard item={item} />
             </li>
           ))}
         </ul>

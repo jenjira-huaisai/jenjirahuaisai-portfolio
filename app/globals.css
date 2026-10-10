@@ -90,6 +90,7 @@
   --letter-spacing-meta: 0.2em;
 
   /* Layout */
+  --radius-box: 12px;
   --page-padding: 4rem;
   --content-max-width: 84rem;
   --header-height: 4.35rem;
@@ -809,10 +810,15 @@ section[id] {
   margin-bottom: 1.25rem;
 }
 
-.work-card-type {
-  margin-bottom: 0.375rem;
+/* Type and date share one quiet style, so the title stands out */
+.work-card-type,
+.work-card-date {
   font-size: var(--font-size-xsmall);
   color: var(--color-text-muted);
+}
+
+.work-card-date {
+  margin-bottom: 0.375rem;
 }
 
 .work-card-title {
@@ -997,12 +1003,21 @@ section[id] {
   text-align: left;
 }
 
+/* Each <li> stretches to the tallest card in its row,
+   and the card fills its <li>, so cards in a row share one height */
+.feedback-grid > li,
+.feedback-page-grid > li {
+  display: flex;
+}
+
 .feedback-card {
   display: flex;
+  flex: 1;
   flex-direction: column;
   padding: 1.75rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-box);
 }
 
 .feedback-card-head {
@@ -1022,30 +1037,109 @@ section[id] {
 .feedback-role {
   font-size: var(--font-size-meta);
   letter-spacing: var(--letter-spacing-meta);
+  text-transform: uppercase;
   color: var(--color-text-muted);
 }
 
 .feedback-quote {
-  margin-bottom: 1.5rem;
   font-size: var(--font-size-small);
   line-height: var(--line-height-small);
 }
 
-.feedback-person {
-  margin-top: auto;
+/* English translation under a Dutch quote */
+.feedback-translation {
+  margin-top: 0.5rem;
   font-size: var(--font-size-xsmall);
   line-height: var(--line-height-xsmall);
   color: var(--color-text-muted);
 }
 
-.feedback-name {
+/* margin-top: auto pushes the name to the bottom of the card */
+.feedback-person {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  font-size: var(--font-size-xsmall);
+  line-height: var(--line-height-xsmall);
+  color: var(--color-text-muted);
+}
+
+/* Name, detail lines and date each on their own line */
+.feedback-name,
+.feedback-detail,
+.feedback-date {
   display: block;
+}
+
+.feedback-name {
   font-weight: var(--font-weight-semibold);
   color: var(--color-text);
 }
 
+.feedback-date {
+  margin-top: 0.25rem;
+}
+
 .feedback-more {
   margin-top: 2.5rem;
+}
+
+/* ---------- Feedback page (/feedback) ---------- */
+
+.feedback-intro {
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+}
+
+.feedback-intro-lead {
+  max-width: 56ch;
+  margin-top: 1.5rem;
+  color: var(--color-text-muted);
+}
+
+/* Same rhythm as a year on the Work page */
+.feedback-group {
+  padding-top: 3.5rem;
+  padding-bottom: var(--section-gap);
+  border-top: 1px solid var(--color-border);
+}
+
+.feedback-group-label {
+  margin-bottom: 3rem;
+}
+
+.feedback-year > .section-label {
+  margin-bottom: 2rem;
+}
+
+/* One row per period: period and project on the left, cards on the right */
+.feedback-period {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 1.5rem 3rem;
+  padding-block: 2.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Period and dates share one quiet style, so the project name stands out */
+.feedback-period-dates {
+  font-size: var(--font-size-meta);
+  line-height: var(--line-height-meta);
+  letter-spacing: var(--letter-spacing-meta);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.feedback-period-title {
+  margin-top: 0.5rem;
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+}
+
+.feedback-page-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
 }
 
 
@@ -1531,9 +1625,15 @@ section[id] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* Odd number of feedback cards: last one spans full width */
-  .feedback-card:last-child:nth-child(odd) {
+  /* Odd number of feedback cards: last one spans full width.
+     The <li> is the grid item, so the rule targets the <li> */
+  .feedback-grid > li:last-child:nth-child(odd) {
     grid-column: 1 / -1;
+  }
+
+  /* Feedback page: period heading above its cards */
+  .feedback-period {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   /* About */
@@ -1728,6 +1828,20 @@ section[id] {
 
   .feedback-card {
     padding: 1.5rem;
+  }
+
+  /* Feedback page: one card per row */
+  .feedback-page-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .feedback-intro {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .feedback-group-label {
+    margin-bottom: 2rem;
   }
 
   .capabilities-grid {

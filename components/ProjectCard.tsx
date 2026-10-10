@@ -30,6 +30,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       />
 
       <p className="work-card-type">{project.type}</p>
+      <p className="work-card-date">{project.date}</p>
 
       <h3 className="work-card-title">{project.title}</h3>
 
@@ -58,11 +59,14 @@ export default function ProjectCard({ project }: { project: Project }) {
         ))}
       </p>
 
-      <Link href={`/work/${project.slug}`} className="text-link work-card-cta">
-        Case study
-        <ArrowRight />
-        <span className="sr-only">: {project.title}</span>
-      </Link>
+      {/* Only link to a case study that really exists — no 404s */}
+      {project.hasCaseStudy && (
+        <Link href={`/work/${project.slug}`} className="text-link work-card-cta">
+          Case study
+          <ArrowRight />
+          <span className="sr-only">: {project.title}</span>
+        </Link>
+      )}
     </li>
   );
 }

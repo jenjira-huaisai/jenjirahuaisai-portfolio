@@ -5,6 +5,8 @@ export type Project = {
   /** Shown on the homepage in Selected Work */
   featured?: boolean;
   type: string;
+  /** Second, grey line under the type: when the project ran or went live */
+  date: string;
   title: string;
   /** Short highlight shown as a black pill, e.g. a result or award */
   badge?: string;
@@ -13,6 +15,11 @@ export type Project = {
   liveUrl?: string;
   githubUrl?: string;
   prototypeUrl?: string;
+  /**
+   * Set to true only when /work/[slug] really exists.
+   * Until then no "Case study" link is shown, so nobody lands on a 404.
+   */
+  hasCaseStudy?: boolean;
   image: { src: string; alt: string };
 };
 
@@ -20,7 +27,6 @@ export type Project = {
  * Every project, in the order it was built.
  * The Work page groups them by year; the homepage shows only
  * the ones marked featured. One list, so nothing gets out of sync.
- * Each project gets a case study page at /work/[slug].
  */
 export const projects: Project[] = [
   /* ---------- Year 1 ---------- */
@@ -28,6 +34,7 @@ export const projects: Project[] = [
     slug: 'circle-solutions',
     year: 1,
     type: 'Period 1 · Web Development',
+    date: 'Sep – Nov 2025',
     title: 'Circle Solutions Web Redesign',
     badge: 'My design was chosen',
     summary:
@@ -43,6 +50,7 @@ export const projects: Project[] = [
     slug: 'morningstar',
     year: 1,
     type: 'Period 2 · Databases & Networks',
+    date: 'Nov 2025 – Jan 2026',
     title: 'The Morningstar School Management System',
     summary:
       'From privacy requirements to a secure database for a new primary school, with role-based access for school staff members.',
@@ -57,11 +65,12 @@ export const projects: Project[] = [
     slug: 'battlebot',
     year: 1,
     type: 'Period 3 · OOP & Hardware',
-    title: 'BattleBot-BB008',
-    badge: 'Fastest on race day',
+    date: 'Feb – Apr 2026',
+    title: 'BattleBot – BB008',
+    badge: 'Fastest on the curve track',
     summary:
       'From a blinking LED to a curve line-following robot in C++, built and tested week by week.',
-    role: 'Team of 2',
+    role: 'Team of 6 · Sub-team of 2',
     // githubUrl: '',
     image: {
       src: '/images/projects/battlebot-card.png',
@@ -72,7 +81,8 @@ export const projects: Project[] = [
     slug: 'winnest',
     year: 1,
     type: 'Period 4 · Project Innovate',
-    title: 'Winnest - Brreding Intelligence',
+    date: 'Apr – Jun 2026',
+    title: 'Winnest – Breeding Intelligence Platform',
     badge: 'My idea was chosen',
     summary:
       'From a real problem in pigeon racing to a breeding intelligence platform, designed in Figma and built as a front-end prototype.',
@@ -85,27 +95,12 @@ export const projects: Project[] = [
   },
 
   {
-    slug: 'sukanya-thai-massage',
-    year: 1,
-    featured: true,
-    type: 'Independent client project',
-    title: 'Sukanya Thai Massage',
-    summary:
-      'From client requirements to a responsive business website with Maps integration for a Thai massage studio.',
-    role: 'Sole designer & developer',
-    liveUrl: 'https://www.sukanyathaimassage.nl',
-    githubUrl: 'https://github.com/jenjira-huaisai/sukanya-thai-massage-website.git',
-    image: {
-      src: '/images/projects/sukanya-card.png',
-      alt: 'The Sukanya Thai Massage website shown on a laptop',
-    },
-  },
-  {
     slug: 'zon-pedicure-salon',
     year: 1,
     featured: true,
     type: 'Independent client project',
-    title: 'Zon Pedicure Salon',
+    date: 'Live since Jun 2026',
+    title: 'Zon Pedicure Salon Business Website',
     summary:
       'From client requirements to a responsive website with a contact form and Maps integration for a medical pedicure practice.',
     role: 'Sole designer & developer',
@@ -116,14 +111,32 @@ export const projects: Project[] = [
       alt: 'The Zon Pedicure Salon website shown on a laptop',
     },
   },
+  {
+    slug: 'sukanya-thai-massage',
+    year: 1,
+    featured: true,
+    type: 'Independent client project',
+    date: 'Live since Jul 2026',
+    title: 'Sukanya Thai Massage Business Website',
+    summary:
+      'From client requirements to a responsive business website with Maps integration for a Thai massage studio.',
+    role: 'Sole designer & developer',
+    liveUrl: 'https://www.sukanyathaimassage.nl',
+    githubUrl: 'https://github.com/jenjira-huaisai/sukanya-thai-massage-website.git',
+    image: {
+      src: '/images/projects/sukanya-card.png',
+      alt: 'The Sukanya Thai Massage website shown on a laptop',
+    },
+  },
 
   /* ---------- Year 2 ---------- */
   {
     slug: 'envitron',
     year: 2,
     featured: true,
-    type: 'Period 1 · Real client project',
-    title: 'Envitron',
+    type: 'Real client project · NHL Stenden',
+    date: 'Sep – Nov 2026',
+    title: 'Envitron – Energy Demand Prediction',
     summary:
       'Researching and prototyping an energy-demand predicting solution for a single-building Energy Management System.',
     role: 'Scrum master · Team of 5',
@@ -138,7 +151,8 @@ export const projects: Project[] = [
     slug: 'portfolio-v2',
     year: 2,
     type: 'Independent project',
-    title: 'Portfolio v2',
+    date: 'Rebuilt in Sep 2026',
+    title: 'Portfolio Redesign and Rebuild in Next.js',
     summary:
       'The same portfolio 1 year later: redesigned in Figma and rebuilt in Next.js and TypeScript, with a clearer structure and accessibility built in.',
     role: 'Sole designer & developer',
@@ -186,42 +200,163 @@ export const studyYears: StudyYear[] = [
   },
 ];
 
+/* ---------- Feedback: homepage and /feedback ---------- */
+
 export type Testimonial = {
   id: string;
-  relation: string;
+  /** Small label at the top right of the card, e.g. "Client" */
+  label: string;
+  /** Exactly as the person wrote it; shorten only with "…" */
   quote: string;
+  /** Language of the quote when it is not English, e.g. "nl" */
+  lang?: string;
+  /** English translation, shown under a non-English quote */
+  translation?: string;
   name: string;
-  role: string;
-  organisation: string;
+  /** One line each under the name */
+  details: string[];
+  /** Month the feedback was given (shown on /feedback for clients) */
+  date?: string;
 };
 
-export const testimonials: Testimonial[] = [
+/*
+ * Each person is written once and reused,
+ * so the homepage and /feedback always show the same words.
+ */
+const onpapha: Testimonial = {
+  id: 'onpapha',
+  label: 'Client',
+  quote: 'Zij werkt systematisch, efficiënt en professioneel.',
+  lang: 'nl',
+  translation: 'She works systematically, efficiently and professionally.',
+  name: 'Onpapha Phumdonkan',
+  details: ['Business owner', 'Zon Pedicure Salon (NL)'],
+  date: 'July 2026',
+};
+
+const gerard: Testimonial = {
+  id: 'gerard',
+  label: 'Employer',
+  quote: 'I see your role as a serious and committed team member.',
+  name: 'Gerard Koopman',
+  details: ['Business owner', 'Gerard en Maniwan Koopman B.V. (NL)'],
+  date: 'June 2026',
+};
+
+const school = 'IT programme · NHL Stenden';
+
+const kyra: Testimonial = {
+  id: 'kyra',
+  label: 'Co-team leader',
+  quote:
+    '…no matter the instructions we give, your work will be perfect. This results in the work being complete and up to the clients’ standards.',
+  name: 'Kyra Kovacs',
+  details: ['Co-team leader', school],
+};
+
+const umaru: Testimonial = {
+  id: 'umaru',
+  label: 'Teammate',
+  quote:
+    'You often step in to summarize what’s been said and ensure everyone is aligned before we move forward.',
+  name: 'Mohammad Umaru Jah',
+  details: ['Teammate', school],
+};
+
+const justinas: Testimonial = {
+  id: 'justinas',
+  label: 'Teammate',
+  quote:
+    'I, as your teammate, am always assured that I can rely on you as a voice of reason.',
+  name: 'Justinas Launikonis',
+  details: ['Teammate', school],
+};
+
+const oleksiiMorningstar: Testimonial = {
+  id: 'oleksii-morningstar',
+  label: 'Teammate',
+  quote:
+    '…when we realised we would have to rewrite the entire project from scratch, your dedication was a huge help – you were willing to work on it even at night – and in the end we managed to get everything done and successfully deliver the project.',
+  name: 'Oleksii Khomiak',
+  details: ['Teammate', school],
+};
+
+const michael: Testimonial = {
+  id: 'michael',
+  label: 'Teammate',
+  quote:
+    '…someone who is creative and technically capable at the same time, which is a rare combination.',
+  name: 'Michael O. Boateng',
+  details: ['Teammate, BattleBot – BB008', school],
+};
+
+const oleksiiWinnest: Testimonial = {
+  id: 'oleksii-winnest',
+  label: 'Teammate',
+  quote:
+    'Instead of avoiding difficulties, you take the initiative to study independently and improve your understanding, which has a positive impact on the team’s progress.',
+  name: 'Oleksii Khomiak',
+  details: ['Teammate', school],
+};
+
+const caleb: Testimonial = {
+  id: 'caleb',
+  label: 'Team leader',
+  quote:
+    'Your willingness to always go above and beyond to get work done. You are also a person that always wants to learn more.',
+  name: 'Caleb Gaitou',
+  details: ['Team leader', school],
+};
+
+/* Homepage: three cards */
+export const homeTestimonials: Testimonial[] = [onpapha, gerard, michael];
+
+/* /feedback: clients and employer */
+export const clientFeedback: Testimonial[] = [onpapha, gerard];
+
+/* /feedback: teammates, one block per study period */
+export type FeedbackPeriod = {
+  year: 1 | 2;
+  period: number;
+  /** When the period ran, e.g. "Sep – Nov 2025" */
+  dates: string;
+  /** Links the block to its project, so the title is never typed twice */
+  projectSlug: string;
+  items: Testimonial[];
+};
+
+export const teammateFeedback: FeedbackPeriod[] = [
   {
-    id: 'onpapha',
-    relation: 'Client',
-    quote: 'Zij werkt systematisch, efficiënt en professioneel..',
-    name: 'Onpapha Phumdonkan',
-    role: 'Business owner',
-    organisation: 'Zon Pedicure Salon (NL)',
+    year: 1,
+    period: 1,
+    dates: 'Sep – Nov 2025',
+    projectSlug: 'circle-solutions',
+    items: [kyra, umaru],
   },
   {
-    id: 'gerard',
-    relation: 'Client',
-    quote: 'I see your role as a serious and committed team member.',
-    name: 'Gerard Koopman',
-    role: 'Business owner',
-    organisation: 'Gerard en Maniwan Koopman B.V. (NL)',
+    year: 1,
+    period: 2,
+    dates: 'Nov 2025 – Jan 2026',
+    projectSlug: 'morningstar',
+    items: [justinas, oleksiiMorningstar],
   },
   {
-    id: 'caleb',
-    relation: 'Teammate',
-    quote:
-      'Your willingness to always go above and beyond to get work done. You are also a person that always wants to learn more.',
-    name: 'Caleb Guitou',
-    role: 'Project Innovate team leader',
-    organisation: 'IT programme · NHL Stenden',
+    year: 1,
+    period: 3,
+    dates: 'Feb – Apr 2026',
+    projectSlug: 'battlebot',
+    items: [michael],
+  },
+  {
+    year: 1,
+    period: 4,
+    dates: 'Apr – Jun 2026',
+    projectSlug: 'winnest',
+    items: [oleksiiWinnest, caleb],
   },
 ];
+
+/* ---------- Homepage: capabilities, stats, logos ---------- */
 
 export type Capability = {
   name: string;
