@@ -1,6 +1,4 @@
-import Link from 'next/link';
 import Container from './Container';
-import { ArrowRight } from './Arrows';
 import { capabilities } from '@/data/content';
 
 export default function Capabilities() {
@@ -28,11 +26,6 @@ export default function Capabilities() {
             </li>
           ))}
         </ul>
-
-        <Link href="/capabilities" className="text-link">
-          View my capabilities
-          <ArrowRight />
-        </Link>
       </Container>
     </section>
   );

@@ -617,7 +617,7 @@ section[id] {
   order: -1;
   /* number shows first, caption comes first in the markup */
   font-size: var(--font-size-stat);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
   line-height: 1;
 }
 
@@ -795,7 +795,7 @@ section[id] {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   /* rows | columns: rows far apart so each link clearly ends its own card */
-  gap: 4.5rem 2rem;
+  gap: 4.5rem 3rem;
 }
 
 .work-card {
@@ -818,18 +818,18 @@ section[id] {
 }
 
 .work-card-date {
-  margin-bottom: 0.375rem;
+  margin-bottom: 0.75rem;
 }
 
 .work-card-title {
-  margin-bottom: 0.625rem;
+  margin-bottom: 0.75rem;
   font-size: var(--font-size-card-title);
   font-weight: var(--font-weight-medium);
   line-height: 1.4;
 }
 
 .work-card-summary {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   font-size: var(--font-size-small);
   line-height: var(--line-height-small);
   color: var(--color-text-muted);
@@ -1103,6 +1103,12 @@ section[id] {
 
 .feedback-date {
   margin-top: 0.25rem;
+}
+
+/* "View all work" under the cards, centred like "See more" in Feedback */
+.selected-work-more {
+  margin-top: 3.5rem;
+  text-align: center;
 }
 
 .feedback-more {

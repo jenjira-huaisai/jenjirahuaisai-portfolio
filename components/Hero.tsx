@@ -9,7 +9,7 @@ export default function Hero() {
       <Container>
         <div className="hero-layout">
           <div className="hero-copy">
-            <p className="hero-eyebrow">IT STUDENT · DESIGN-MINDED DEVELOPER</p>
+            <p className="section-label hero-eyebrow">IT STUDENT · DESIGN-MINDED DEVELOPER</p>
 
             <h1 id="hero-title" className="hero-title">
               Design it.

@@ -24,11 +24,6 @@ export default function SelectedWork() {
               to working products.
             </h2>
           </div>
-
-          <Link href="/work" className="text-link">
-            View all work
-            <ArrowRight />
-          </Link>
         </div>
 
         <ul className="work-grid">
@@ -36,6 +31,13 @@ export default function SelectedWork() {
             <ProjectCard key={project.slug} project={project} />
           ))}
         </ul>
+
+        <div className="selected-work-more">
+          <Link href="/work" className="text-link">
+            View all work
+            <ArrowRight />
+          </Link>
+        </div>
       </Container>
     </section>
   );
