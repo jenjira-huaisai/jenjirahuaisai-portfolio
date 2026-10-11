@@ -21,3 +21,13 @@ export default function ContactPage() {
               Let’s talk.
             </h1>
             <p className="contact-page-intro">
+              For a UI or front-end internship from September 2027, or a project you have in mind.
+            </p>
+          </div>
+
+          <ContactForm />
+        </div>
+      </Container>
+    </section>
+  );
+}
