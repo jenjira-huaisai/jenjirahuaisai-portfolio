@@ -1304,16 +1304,12 @@ section[id] {
   padding-block: clamp(3rem, 2rem + 4vw, 6rem) var(--section-gap);
 }
 
+/* Desktop: text 40% | form 60% */
 .contact-page-inner {
-  max-width: 36rem;
-}
-
-.contact-page-eyebrow {
-  margin-bottom: 1.25rem;
-  font-size: var(--font-size-label);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-label);
-  letter-spacing: var(--letter-spacing-label);
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: 3rem 6rem;
+  align-items: start;
 }
 
 .contact-page-title {
@@ -1347,7 +1343,6 @@ section[id] {
   display: flex;
   flex-direction: column;
   gap: 2.25rem;
-  margin-top: 3.5rem;
 }
 
 .form-field {
@@ -1659,6 +1654,11 @@ section[id] {
 
   /* Feedback page: period heading above its cards */
   .feedback-period {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Contact page: text above the form */
+  .contact-page-inner {
     grid-template-columns: minmax(0, 1fr);
   }
 

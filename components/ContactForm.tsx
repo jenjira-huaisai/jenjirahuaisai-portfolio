@@ -93,11 +93,11 @@ export default function ContactForm() {
 
   if (status === 'sent') {
     return (
-      <div role="status">
-        <p className="contact-page-eyebrow">CONTACT</p>
-        <h1 id="contact-page-title" className="contact-page-title" ref={thankYouRef} tabIndex={-1}>
+      // Replaces the form in the right column; the heading on the left stays
+      <div className="contact-thanks" role="status">
+        <h2 className="contact-page-title" ref={thankYouRef} tabIndex={-1}>
           Thank you.
-        </h1>
+        </h2>
         <p className="contact-page-intro">
           Your message is on its way. I’ll reply to the email address you gave.
         </p>
@@ -117,114 +117,104 @@ export default function ContactForm() {
   const isSending = status === 'sending';
 
   return (
-    <>
-      <p className="contact-page-eyebrow">CONTACT</p>
-      <h1 id="contact-page-title" className="contact-page-title">
-        Let’s talk.
-      </h1>
-      <p className="contact-page-intro">
-        For a UI or front-end internship from September 2027, or a project you have in mind.
-      </p>
-
-      <form className="contact-form" onSubmit={handleSubmit} noValidate aria-label="Contact form">
-        <div className="form-field">
-          <label htmlFor="contact-name" className="form-label">
-            Name
-          </label>
-          <input
-            ref={nameRef}
-            id="contact-name"
-            name="name"
-            type="text"
-            autoComplete="name"
-            placeholder="Your name"
-            className="form-input"
-            value={values.name}
-            onChange={(event) => handleChange('name', event.target.value)}
-            aria-invalid={errors.name ? true : undefined}
-            aria-describedby={errors.name ? 'contact-name-error' : undefined}
-            maxLength={100}
-          />
-          {errors.name && (
-            <p id="contact-name-error" className="form-error">
-              {errors.name}
-            </p>
-          )}
-        </div>
-
-        <div className="form-field">
-          <label htmlFor="contact-email" className="form-label">
-            Email
-          </label>
-          <input
-            ref={emailRef}
-            id="contact-email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            placeholder="name@company.com"
-            className="form-input"
-            value={values.email}
-            onChange={(event) => handleChange('email', event.target.value)}
-            aria-invalid={errors.email ? true : undefined}
-            aria-describedby={errors.email ? 'contact-email-error' : undefined}
-            maxLength={200}
-          />
-          {errors.email && (
-            <p id="contact-email-error" className="form-error">
-              {errors.email}
-            </p>
-          )}
-        </div>
-
-        <div className="form-field">
-          <label htmlFor="contact-message" className="form-label">
-            Message
-          </label>
-          <textarea
-            ref={messageRef}
-            id="contact-message"
-            name="message"
-            rows={5}
-            placeholder="How can I help?"
-            className="form-input form-textarea"
-            value={values.message}
-            onChange={(event) => handleChange('message', event.target.value)}
-            aria-invalid={errors.message ? true : undefined}
-            aria-describedby={errors.message ? 'contact-message-error' : undefined}
-            maxLength={5000}
-          />
-          {errors.message && (
-            <p id="contact-message-error" className="form-error">
-              {errors.message}
-            </p>
-          )}
-        </div>
-
-        {/* Spam trap: hidden from people, bots tend to fill it in */}
-        <div className="form-honeypot" aria-hidden="true">
-          <label htmlFor="contact-company">Company</label>
-          <input id="contact-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
-        </div>
-
-        {status === 'failed' && (
-          <p className="form-status-error" role="alert">
-            Your message could not be sent. Please try again, or email{' '}
-            <a href="mailto:info@jenjirahuaisai.com">info@jenjirahuaisai.com</a>.
+    <form className="contact-form" onSubmit={handleSubmit} noValidate aria-label="Contact form">
+      <div className="form-field">
+        <label htmlFor="contact-name" className="form-label">
+          Name
+        </label>
+        <input
+          ref={nameRef}
+          id="contact-name"
+          name="name"
+          type="text"
+          autoComplete="name"
+          placeholder="Your name"
+          className="form-input"
+          value={values.name}
+          onChange={(event) => handleChange('name', event.target.value)}
+          aria-invalid={errors.name ? true : undefined}
+          aria-describedby={errors.name ? 'contact-name-error' : undefined}
+          maxLength={100}
+        />
+        {errors.name && (
+          <p id="contact-name-error" className="form-error">
+            {errors.name}
           </p>
         )}
+      </div>
 
-        <div className="contact-form-footer">
-          <button type="submit" className="button-primary contact-form-submit" disabled={isSending}>
-            {isSending ? 'Sending…' : 'Send message'}
-            {!isSending && <Arrow />}
-          </button>
-          <p className="contact-form-note">
-            Your details are only used to reply. Prefer email?{' '}
-            <a href="mailto:info@jenjirahuaisai.com">info@jenjirahuaisai.com</a>
+      <div className="form-field">
+        <label htmlFor="contact-email" className="form-label">
+          Email
+        </label>
+        <input
+          ref={emailRef}
+          id="contact-email"
+          name="email"
+          type="email"
+          autoComplete="email"
+          placeholder="name@company.com"
+          className="form-input"
+          value={values.email}
+          onChange={(event) => handleChange('email', event.target.value)}
+          aria-invalid={errors.email ? true : undefined}
+          aria-describedby={errors.email ? 'contact-email-error' : undefined}
+          maxLength={200}
+        />
+        {errors.email && (
+          <p id="contact-email-error" className="form-error">
+            {errors.email}
           </p>
-        </div>
-      </form>
-    </>
+        )}
+      </div>
+
+      <div className="form-field">
+        <label htmlFor="contact-message" className="form-label">
+          Message
+        </label>
+        <textarea
+          ref={messageRef}
+          id="contact-message"
+          name="message"
+          rows={5}
+          placeholder="How can I help?"
+          className="form-input form-textarea"
+          value={values.message}
+          onChange={(event) => handleChange('message', event.target.value)}
+          aria-invalid={errors.message ? true : undefined}
+          aria-describedby={errors.message ? 'contact-message-error' : undefined}
+          maxLength={5000}
+        />
+        {errors.message && (
+          <p id="contact-message-error" className="form-error">
+            {errors.message}
+          </p>
+        )}
+      </div>
+
+      {/* Spam trap: hidden from people, bots tend to fill it in */}
+      <div className="form-honeypot" aria-hidden="true">
+        <label htmlFor="contact-company">Company</label>
+        <input id="contact-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
+      {status === 'failed' && (
+        <p className="form-status-error" role="alert">
+          Your message could not be sent. Please try again, or email{' '}
+          <a href="mailto:info@jenjirahuaisai.com">info@jenjirahuaisai.com</a>.
+        </p>
+      )}
+
+      <div className="contact-form-footer">
+        <button type="submit" className="button-primary contact-form-submit" disabled={isSending}>
+          {isSending ? 'Sending…' : 'Send message'}
+          {!isSending && <Arrow />}
+        </button>
+        <p className="contact-form-note">
+          Your details are only used to reply. Prefer email?{' '}
+          <a href="mailto:info@jenjirahuaisai.com">info@jenjirahuaisai.com</a>
+        </p>
+      </div>
+    </form>
   );
 }
