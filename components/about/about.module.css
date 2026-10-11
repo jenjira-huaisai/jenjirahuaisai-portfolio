@@ -448,6 +448,12 @@
 /* ---------- Mobile (≤ 640px) ---------- */
 
 @media (max-width: 40rem) {
+  /* The map is too small to read on a phone, and "Travel · 9 countries"
+     in Outside of study already says it, so the section is desktop only */
+  .travelSection {
+    display: none;
+  }
+
   /* Period moves above the title; the rail stays on the left */
   .step {
     grid-template-columns: 1.25rem minmax(0, 1fr);

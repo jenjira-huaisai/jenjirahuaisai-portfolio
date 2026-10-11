@@ -9,7 +9,7 @@ export type JourneyStep = {
 };
 
 export const journeyIntro =
-  'I started my career as a teacher in Thailand. In 2025 I moved to the Netherlands to study IT at NHL Stenden. I now work across the stack, and my focus is UI and front-end: turning designs into interfaces that are clear, accessible and easy to use.';
+  'I work across the stack, and my focus is UI and front-end: turning designs into interfaces that are clear, accessible and easy to use. This is how I got here.';
 
 export const journey: JourneyStep[] = [
   {
@@ -25,12 +25,12 @@ export const journey: JourneyStep[] = [
   {
     period: '2025 – 2026',
     title: 'Year 1 · NHL Stenden',
-    text: 'Completed 4 course projects, built 2 websites built independently for local businesses and started a part-time admin role. Launched my first full-stack web application (PHP, MySQL, JavaScript), live since 2025.',
+    text: 'Completed 4 course projects, built 2 websites independently for local businesses and started a part-time admin role. Launched my first full-stack web application (PHP, MySQL, JavaScript), live since 2025.',
   },
   {
     period: '2026 – 2027',
     title: 'Year 2 · NHL Stenden',
-    text: 'School projects with real clients. Learning React and TypeScript by building this site is Next.js.',
+    text: 'School projects with real clients. Learning React and TypeScript by building this site in Next.js.',
   },
   {
     period: 'September 2027',
@@ -84,7 +84,6 @@ export const hobbies: Hobby[] = [
     title: 'Travel',
     // Counted from the list above, so it updates when a country is added
     text: `${visitedCountries.length} countries so far, exploring the world for new ideas and inspiration.`,
-    href: '#where-ive-been',
   },
   {
     icon: 'camera',

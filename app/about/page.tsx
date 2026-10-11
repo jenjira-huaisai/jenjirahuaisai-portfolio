@@ -15,9 +15,9 @@ export default function AboutPage() {
   return (
     <>
       <AboutJourney />
+      <AboutEducation />
       <AboutHobbies />
       <TravelMap />
-      <AboutEducation />
       <ContactCTA />
     </>
   );

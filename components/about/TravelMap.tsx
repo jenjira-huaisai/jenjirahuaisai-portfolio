@@ -116,7 +116,11 @@ export default function TravelMap() {
   );
 
   return (
-    <section id="where-ive-been" className="section" aria-labelledby="map-title">
+    <section
+      id="where-ive-been"
+      className={`section ${styles.travelSection}`}
+      aria-labelledby="map-title"
+    >
       <Container>
         <div className={styles.travelHeader}>
           <div>
